@@ -1,0 +1,11 @@
+{
+  "folders": [
+	{
+		"name": "new-fastrack",
+		"path": "."
+	}
+],
+  "settings": {
+    "liveServer.settings.multiRootWorkspaceName": "new-fastrack"
+  }
+}
