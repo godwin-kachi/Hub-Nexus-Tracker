@@ -1,79 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Contact FastTrack</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact FastTrack</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
-  <style>
-    .hero {
-      height: 400px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-    }
-    .contact-section {
-      padding: 60px 0;
-    }
-    .contact-info {
-      margin-bottom: 40px;
-    }
-    .contact-info i {
-      font-size: 24px;
-      color: #007bff;
-      margin-right: 10px;
-    }
-    .contact-form {
-      background-color: #f8f9fa;
-      padding: 40px;
-      border-radius: 5px;
-    }
-    .contact-form .form-control {
-      border-color: #ced4da;
-    }
-    .cta-buttons {
-      display: flex;
-      justify-content: center;
-      margin-top: 30px;
-    }
-    .cta-buttons .btn {
-      margin: 0 10px;
-    }
-    .testimonials {
-      padding: 40px 0;
-      background-color: #f8f9fa;
-    }
-    .testimonial-item {
-      margin-bottom: 30px;
-    }
-    .testimonial-item img {
-      width: 50px;
-      height: 50px;
-      border-radius: 50%;
-      margin-right: 20px;
-    }
-    .testimonial-item h5 {
-      font-size: 18px;
-      margin-bottom: 5px;
-    }
-    .testimonial-item p {
-      font-size: 16px;
-      color: #6c757d;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <style>
+      .hero {
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+      }
+      .contact-section {
+        padding: 60px 0;
+      }
+      .contact-info {
+        margin-bottom: 40px;
+      }
+      .contact-info i {
+        font-size: 24px;
+        color: #007bff;
+        margin-right: 10px;
+      }
+      .contact-form {
+        background-color: #f8f9fa;
+        padding: 40px;
+        border-radius: 5px;
+      }
+      .contact-form .form-control {
+        border-color: #ced4da;
+      }
+      .cta-buttons {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+      }
+      .cta-buttons .btn {
+        margin: 0 10px;
+      }
+      .testimonials {
+        padding: 40px 0;
+        background-color: #f8f9fa;
+      }
+      .testimonial-item {
+        margin-bottom: 30px;
+      }
+      .testimonial-item img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        margin-right: 20px;
+      }
+      .testimonial-item h5 {
+        font-size: 18px;
+        margin-bottom: 5px;
+      }
+      .testimonial-item p {
+        font-size: 16px;
+        color: #6c757d;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <a class="navbar-brand" href="#">FastTrack</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -87,145 +97,202 @@
             <li class="nav-item">
               <a class="nav-link" href="tracking.html">Tracking</a>
             </li>
-  
+
             <li class="nav-item">
               <a href="services.html" class="nav-link">Services</a>
             </li>
-  
+
             <li class="nav-item active">
               <a class="nav-link" href="contact.html">Contact</a>
             </li>
           </ul>
         </div>
       </nav>
-  </header>
+    </header>
 
-  <main>
-    <div class="hero bg-secondary">
-      <div class="container">
-        <h1 class="display-4">Contact Us</h1>
-        <p class="lead">Get in touch with our team for all your shipping and logistics needs.</p>
-        <div class="cta-buttons">
-          <a href="#contact-form" class="btn btn-primary">Contact Us</a>
-          <a href="#faqs" class="btn btn-outline-light">FAQs</a>
-        </div>
-      </div>
-    </div>
-
-    <div class="contact-section">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="contact-info">
-              <h4>Our Office</h4>
-              <p><i class="fas fa-map-marker-alt"></i>123 Main Street, Anytown USA</p>
-              <p><i class="fas fa-phone"></i>+1 (555) 123-4567</p>
-              <p><i class="fas fa-envelope"></i>info@fasttrack.com</p>
-            </div>
-            <div class="contact-info">
-              <h4>Business Hours</h4>
-              <p><i class="fas fa-clock"></i>Monday - Friday: 9:00 AM - 5:00 PM</p>
-              <p><i class="fas fa-clock"></i>Saturday - Sunday: Closed</p>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="contact-form" id="contact-form">
-              <h4>Send Us a Message</h4>
-              <form>
-                <div class="form-group">
-                  <label for="name">Name</label>
-                  <input type="text" class="form-control" id="name" placeholder="Enter your name" required>
-                </div>
-                <div class="form-group">
-                  <label for="email">Email</label>
-                  <input type="email" class="form-control" id="email" placeholder="Enter your email" required>
-                </div>
-                <div class="form-group">
-                  <label for="message">Message</label>
-                  <textarea class="form-control" id="message" rows="5" placeholder="Enter your message" required></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Send Message</button>
-              </form>
-            </div>
+    <main>
+      <div class="hero bg-secondary">
+        <div class="container">
+          <h1 class="display-4">Contact Us</h1>
+          <p class="lead">
+            Get in touch with our team for all your shipping and logistics
+            needs.
+          </p>
+          <div class="cta-buttons">
+            <a href="#contact-form" class="btn btn-primary">Contact Us</a>
+            <a href="#faqs" class="btn btn-outline-light">FAQs</a>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="testimonials">
-      <div class="container">
-        <h2 class="text-center mb-5">What Our Clients Say</h2>
-        <div class="row">
-          <div class="col-md-6">
-            <div class="testimonial-item">
-              <img src="https://via.placeholder.com/50" alt="Client 1">
-              <div>
-                <h5>John Doe</h5>
-                <p>"FastTrack's services have been a game-changer for our business. Reliable and efficient, every time."</p>
+      <div class="contact-section">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="contact-info">
+                <h4>Our Office</h4>
+                <p>
+                  <i class="fas fa-map-marker-alt"></i>123 Main Street, Anytown
+                  USA
+                </p>
+                <p><i class="fas fa-phone"></i>+1 (555) 123-4567</p>
+                <p><i class="fas fa-envelope"></i>info@fasttrack.com</p>
+              </div>
+              <div class="contact-info">
+                <h4>Business Hours</h4>
+                <p>
+                  <i class="fas fa-clock"></i>Monday - Friday: 9:00 AM - 5:00 PM
+                </p>
+                <p><i class="fas fa-clock"></i>Saturday - Sunday: Closed</p>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="contact-form" id="contact-form">
+                <h4>Send Us a Message</h4>
+                <form>
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="name"
+                      placeholder="Enter your name"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="email"
+                      placeholder="Enter your email"
+                      required
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea
+                      class="form-control"
+                      id="message"
+                      rows="5"
+                      placeholder="Enter your message"
+                      required
+                    ></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary">
+                    Send Message
+                  </button>
+                </form>
               </div>
             </div>
           </div>
-          <div class="col-md-6">
-            <div class="testimonial-item">
-              <img src="https://via.placeholder.com/50" alt="Client 2">
-              <div>
-                <h5>Jane Smith</h5>
-                <p>"We've been working with FastTrack for years, and their team is always responsive and helpful."</p>
+        </div>
+      </div>
+
+      <div class="testimonials">
+        <div class="container">
+          <h2 class="text-center mb-5">What Our Clients Say</h2>
+          <div class="row">
+            <div class="col-md-6">
+              <div class="testimonial-item">
+                <img src="https://via.placeholder.com/50" alt="Client 1" />
+                <div>
+                  <h5>John Doe</h5>
+                  <p>
+                    "FastTrack's services have been a game-changer for our
+                    business. Reliable and efficient, every time."
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <div class="testimonial-item">
+                <img src="https://via.placeholder.com/50" alt="Client 2" />
+                <div>
+                  <h5>Jane Smith</h5>
+                  <p>
+                    "We've been working with FastTrack for years, and their team
+                    is always responsive and helpful."
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="container" id="faqs">
-      <h2 class="text-center mb-5">Frequently Asked Questions</h2>
-      <div class="row">
-        <div class="col-md-6">
-          <h5>How long does it take to ship my order?</h5>
-          <p>The estimated delivery time for your shipment will depend on the shipping method you select and your location. Our standard ground shipping typically takes 3-5 business days.</p>
-        </div>
-        <div class="col-md-6">
-          <h5>Can I track my shipment?</h5>
-          <p>Absolutely! You can track the status of your shipment by entering your tracking number on our website. We provide real-time updates on the location and delivery status of your package.</p>
+      <div class="container" id="faqs">
+        <h2 class="text-center mb-5">Frequently Asked Questions</h2>
+        <div class="row">
+          <div class="col-md-6">
+            <h5>How long does it take to ship my order?</h5>
+            <p>
+              The estimated delivery time for your shipment will depend on the
+              shipping method you select and your location. Our standard ground
+              shipping typically takes 3-5 business days.
+            </p>
+          </div>
+          <div class="col-md-6">
+            <h5>Can I track my shipment?</h5>
+            <p>
+              Absolutely! You can track the status of your shipment by entering
+              your tracking number on our website. We provide real-time updates
+              on the location and delivery status of your package.
+            </p>
+          </div>
         </div>
       </div>
-    </div>
-  </main>
+    </main>
 
-  
-  <footer class="bg-dark text-white py-4">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-6">
-          <h5>FastTrack</h5>
-          <p>Reliable and efficient shipping solutions.</p>
+    <footer class="bg-dark text-white py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>FastTrack</h5>
+            <p>Reliable and efficient shipping solutions.</p>
+          </div>
+          <div class="col-md-3">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="index.html" class="text-white">Home</a></li>
+              <li><a href="tracking.html" class="text-white">Tracking</a></li>
+              <li><a href="about.html" class="text-white">About Us</a></li>
+              <li><a href="services.html" class="text-white">Services</a></li>
+              <li><a href="contact.html" class="text-white">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5>Follow Us</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-white"
+                  ><i class="fab fa-facebook-f"></i> Facebook</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white"
+                  ><i class="fab fa-twitter"></i> Twitter</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white"
+                  ><i class="fab fa-linkedin-in"></i> LinkedIn</a
+                >
+              </li>
+            </ul>
+          </div>
         </div>
-        <div class="col-md-3">
-          <h5>Quick Links</h5>
-          <ul class="list-unstyled">
-            <li><a href="index.html" class="text-white">Home</a></li>
-            <li><a href="tracking.html" class="text-white">Tracking</a></li>
-            <li><a href="about.html" class="text-white">About Us</a></li>
-            <li><a href="services.html" class="text-white">Services</a></li>
-            <li><a href="contact.html" class="text-white">Contact</a></li>
-          </ul>
-        </div>
-        <div class="col-md-3">
-          <h5>Follow Us</h5>
-          <ul class="list-unstyled">
-            <li><a href="#" class="text-white"><i class="fab fa-facebook-f"></i> Facebook</a></li>
-            <li><a href="#" class="text-white"><i class="fab fa-twitter"></i> Twitter</a></li>
-            <li><a href="#" class="text-white"><i class="fab fa-linkedin-in"></i> LinkedIn</a></li>
-          </ul>
+        <div class="row mt-3">
+          <div class="col-md-12 text-center">
+            <p class="mb-0">&copy; 2023 FastTrack. All rights reserved.</p>
+          </div>
         </div>
       </div>
-      <div class="row mt-3">
-        <div class="col-md-12 text-center">
-          <p class="mb-0">&copy; 2023 FastTrack. All rights reserved.</p>
-        </div>
-      </div>
-    </div>
-  </footer>
-</body>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </body>
 </html>

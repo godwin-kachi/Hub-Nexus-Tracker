@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>FastTrack Shipment Details</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <style>
+      .hero {
+        background-size: cover;
+        background-position: center;
+        height: 400px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+      }
+      .shipment-details {
+        padding: 60px 0;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">FastTrack</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tracking.html">Tracking</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="services.html" class="nav-link">Services</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="hero bg-secondary">
+        <div class="container">
+          <h1 class="display-4">Shipment Details</h1>
+          <p class="lead">Track the status of your order.</p>
+        </div>
+      </div>
+
+      <div class="container my-5">
+        <h1>Shipment Details</h1>
+        <div class="my-4">
+          <p>Tracking Number: <span id="tracking-number"></span></p>
+          <p>Sender Name: <span id="sender-name"></span></p>
+          <p>Sender Address: <span id="sender-address"></span></p>
+          <p>Recipient Name: <span id="recipient-name"></span></p>
+          <p>Recipient Address: <span id="recipient-address"></span></p>
+          <p>Package Weight: <span id="package-weight"></span></p>
+          <p>
+            Package Dimensions: <span id="package-length"></span> x
+            <span id="package-width"></span> x <span id="package-height"></span>
+          </p>
+        </div>
+      </div>
+
+      <div id="map" style="height: 500px; width: 100%"></div>
+    </main>
+
+    <footer class="bg-dark text-white py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>FastTrack</h5>
+            <p>Reliable and efficient shipping solutions.</p>
+          </div>
+          <div class="col-md-3">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="index.html" class="text-white">Home</a></li>
+              <li><a href="tracking.html" class="text-white">Tracking</a></li>
+              <li><a href="about.html" class="text-white">About Us</a></li>
+              <li><a href="services.html" class="text-white">Services</a></li>
+              <li><a href="contact.html" class="text-white">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5>Follow Us</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-white"
+                  ><i class="fab fa-facebook-f"></i> Facebook</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white"
+                  ><i class="fab fa-twitter"></i> Twitter</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white"
+                  ><i class="fab fa-linkedin-in"></i> LinkedIn</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12 text-center">
+            <p class="mb-0">&copy; 2023 FastTrack. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const urlParams = new URLSearchParams(window.location.search);
+      const trackingNumber = urlParams.get("trackingNumber");
+
+      fetch(`/api/shipments/${trackingNumber}`)
+        .then((response) => response.json())
+        .then((shipment) => {
+          if (!shipment) {
+            alert("Invalid tracking number. Please check and try again.");
+            window.location.href = "/tracking.html";
+            return;
+          }
+
+          document.getElementById("tracking-number").textContent =
+            shipment.trackingNumber;
+          document.getElementById("sender-name").textContent =
+            shipment.senderName;
+          document.getElementById("sender-address").textContent =
+            shipment.senderAddress;
+          document.getElementById("recipient-name").textContent =
+            shipment.recipientName;
+          document.getElementById("recipient-address").textContent =
+            shipment.recipientAddress;
+          document.getElementById("package-weight").textContent =
+            shipment.packageWeight + " kg";
+          document.getElementById("package-length").textContent =
+            shipment.packageLength + " cm";
+          document.getElementById("package-width").textContent =
+            shipment.packageWidth + " cm";
+          document.getElementById("package-height").textContent =
+            shipment.packageHeight + " cm";
+        })
+        .catch((error) => {
+          console.error("Error fetching shipment:", error);
+          alert("An error occurred while fetching the shipment details.");
+        });
+    </script>
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+  </body>
+</html>
