@@ -1,0 +1,30 @@
+.hero {
+  background-image: url("../images/feature.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.services-section {
+  padding: 60px 0;
+}
+.service-item {
+  text-align: center;
+  margin-bottom: 40px;
+}
+.service-item i {
+  font-size: 48px;
+  color: #007bff;
+  margin-bottom: 20px;
+}
+.service-item h4 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+.service-item p {
+  font-size: 16px;
+  color: #6c757d;
+}

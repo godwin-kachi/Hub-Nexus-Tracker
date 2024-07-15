@@ -1,0 +1,53 @@
+/* Add your CSS styles here */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.tracking-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.tracking-input {
+  padding: 8px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.tracking-button {
+  padding: 8px 16px;
+  font-size: 16px;
+  background-color: #ff6b00;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.tracking-details {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 20px;
+}
+
+.tracking-details h2 {
+  margin-top: 0;
+}
+
+.tracking-details-section {
+  margin-bottom: 20px;
+}
+
+.tracking-details-section h3 {
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.tracking-details-content {
+  display: none;
+}
