@@ -146,34 +146,9 @@
       </div>
     </footer>
 
-    <script>
-      document
-        .getElementById("tracking-form")
-        .addEventListener("submit", (event) => {
-          event.preventDefault();
-          const trackingNumber =
-            document.getElementById("tracking-number").value;
-
-          // Validate the tracking number on the server-side
-          fetch(`/api/tracking/${trackingNumber}`)
-            .then((response) => response.json())
-            .then((result) => {
-              if (result.valid) {
-                // Redirect the user to the Shipment Details page
-                window.location.href = `/shipment-details.html?trackingNumber=${trackingNumber}`;
-              } else {
-                alert("Invalid tracking number. Please check and try again.");
-              }
-            })
-            .catch((error) => {
-              console.error("Error validating tracking number:", error);
-              alert("An error occurred while validating the tracking number.");
-            });
-        });
-    </script>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="tracking.js"></script>
   </body>
 </html>
