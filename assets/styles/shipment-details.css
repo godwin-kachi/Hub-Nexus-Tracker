@@ -1,0 +1,12 @@
+.hero {
+  background-size: cover;
+  background-position: center;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.shipment-details {
+  padding: 60px 0;
+}

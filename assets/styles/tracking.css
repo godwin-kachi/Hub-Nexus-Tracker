@@ -1,0 +1,10 @@
+.hero {
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+.tracking-form {
+  padding: 60px 0;
+}
