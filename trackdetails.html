@@ -4,115 +4,187 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="assets/styles/trackdetails.css" />
+    <!-- <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+      crossorigin="anonymous"
+    /> -->
+
+    <!-- ACCORDION STYLE CDN -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous"
+    />
+    <!-- END OF ACCORDION STYLE CDN -->
+
+    <!-- OTHER CSS LIBRARY -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <!-- END OF OTHER CSS LIBRARY -->
+
+    <!-- FONT AWESOME LIBRARY -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- END OF FONT AWESOME LIBRARY -->
+
     <title>Tracking Page</title>
   </head>
   <body>
     <div class="container">
-      <div class="tracking-form">
-        <input
-          type="text"
-          class="tracking-input"
-          placeholder="Enter Tracking Number"
-        />
-        <button class="tracking-button" onclick="displayTrackingDetails()">
-          Track
-        </button>
-      </div>
-      <div class="tracking-details">
-        <h2>Tracking Details</h2>
-        <div class="tracking-details-section">
-          <h3 onclick="toggleSection(this)">Sender's Information</h3>
-          <div class="tracking-details-content">
-            <p id="sender-name"></p>
-            <p id="sender-phone"></p>
-            <p id="sender-email"></p>
-            <p id="sender-address"></p>
+
+      <!-- Details -->
+      
+      <div class="row">
+         <div class="col-md-6">
+            <h1>Tracking Details</h1>
+            <p>Your order is currently being processed. We'll send you an update soon.</p>
+            <p>Tracking Number: 1234567890</p>
+            </div>
+       </div>
+
+      <!-- End details -->
+
+
+      <div class="accordion" id="accordionExample">
+        <div class="card mb-2">
+          <div
+            class="card-header bg-orange d-flex justify-content-between align-items-center"
+            id="headingOne"
+          >
+            <div class="left">
+              <h6 class="mb-0">Tracking Status</h2>
+            </div>
+            <div class="sign">
+              <h2 class="mb-0">
+                <button
+                  class="btn btn-block"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseOne"
+                  aria-expanded="true"
+                  aria-controls="collapseOne"
+                >
+                  +
+                </button>
+              </h2>
+            </div>
+          </div>
+
+          <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="card-body">
+              <p>Mover</p>
+              Moved Printed</div>
           </div>
         </div>
-        <div class="tracking-details-section">
-          <h3 onclick="toggleSection(this)">Receiver's Information</h3>
-          <div class="tracking-details-content">
-            <p id="receiver-name"></p>
-            <p id="receiver-email"></p>
-            <p id="receiver-phone"></p>
-            <p id="receiver-location"></p>
+
+        <!-- Number 2 -->
+        <div class="card mb-2">
+          <div
+            class="card-header bg-orange d-flex justify-content-between align-items-center"
+            id="headingTwo"
+          >
+            <div class="left">
+              <h6 class="mb-0">Tracking Operation</h2>
+            </div>
+            <div class="sign">
+              <h2 class="mb-0">
+                <button
+                  class="btn btn-block"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseTwo"
+                  aria-expanded="false"
+                  aria-controls="collapseTwo"
+                >
+                  +
+                </button>
+              </h2>
+            </div>
+          </div>
+
+          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+            <div class="card-body d-flex align-items-center justify-content-between w-70">
+              <div class="ccbo">
+                <h6>Sender</h6>
+                <h6>Location</h6>
+              </div>
+              <div class="ccbx">
+                <h6>Imole</h6>
+                <h6>Lagos</h6>
+              </div>
+              
+            </div>
           </div>
         </div>
-        <div class="tracking-details-section">
-          <h3 onclick="toggleSection(this)">Consignment Details</h3>
-          <div class="tracking-details-content">
-            <p>Tracking ID: <span id="tracking-id"></span></p>
-            <p>Invoice Number: <span id="invoice-number"></span></p>
-            <p>Shipment Date: <span id="shipment-date"></span></p>
-            <p>Delivery Date: <span id="delivery-date"></span></p>
-            <p>Weight: <span id="weight"></span></p>
-            <p>Quantity: <span id="quantity"></span></p>
-            <p>Mode Of Shipment: <span id="mode-of-shipment"></span></p>
-            <p>Type Of Shipment: <span id="type-of-shipment"></span></p>
+
+        <!-- Number 3 -->
+        <div class="card mb-2">
+          <div
+            class="card-header bg-orange d-flex justify-content-between align-items-center"
+            id="headingTwo"
+          >
+            <div class="left">
+              <h6 class="mb-0">Tracking Operation</h2>
+            </div>
+            <div class="sign">
+              <h2 class="mb-0">
+                <button
+                  class="btn btn-block"
+                  type="button"
+                  data-toggle="collapse"
+                  data-target="#collapseThree"
+                  aria-expanded="false"
+                  aria-controls="collapseThree"
+                >
+                  +
+                </button>
+              </h2>
+            </div>
+          </div>
+
+          <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+            <div class="card-body">
+              <ul>
+                <ol>Game:</ol>
+                <ol>Fame:</ol>
+                <ol>Build:</ol>
+                <ol>Connect:</ol>
+                <ol>Imagine:</ol>
+              </ul>
+            </div>
           </div>
         </div>
+
       </div>
     </div>
 
-    <script>
-      function displayTrackingDetails() {
-        var trackingInput = document.querySelector(".tracking-input");
 
-        // Fetch tracking details from the API
-        fetch(
-          `https://your-api-endpoint.com/tracking?id=${trackingInput.value}`
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            // Update the tracking information based on the API response
-            document.getElementById("sender-name").textContent =
-              data.sender_name;
-            document.getElementById("sender-phone").textContent =
-              data.sender_phone;
-            document.getElementById("sender-email").textContent =
-              data.sender_email;
-            document.getElementById("sender-address").textContent =
-              data.sender_address;
+  
+    <!-- SCRIPT CONTROLLING THE ACCORDION -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
 
-            document.getElementById("receiver-name").textContent =
-              data.receiver_name;
-            document.getElementById("receiver-email").textContent =
-              data.receiver_email;
-            document.getElementById("receiver-phone").textContent =
-              data.receiver_phone;
-            document.getElementById("receiver-location").textContent =
-              data.receiver_location;
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+    ></script>
+    <!-- END OF ACCORDION SCRIPT -->
 
-            document.getElementById("tracking-id").textContent =
-              data.tracking_id;
-            document.getElementById("invoice-number").textContent =
-              data.invoice_number;
-            document.getElementById("shipment-date").textContent =
-              data.shipment_date;
-            document.getElementById("delivery-date").textContent =
-              data.delivery_date;
-            document.getElementById("weight").textContent = data.weight;
-            document.getElementById("quantity").textContent = data.quantity;
-            document.getElementById("mode-of-shipment").textContent =
-              data.mode_of_shipment;
-            document.getElementById("type-of-shipment").textContent =
-              data.type_of_shipment;
-          })
-          .catch((error) => {
-            // Handle any errors that occurred during the API request
-            console.error("Error fetching tracking details:", error);
-            alert("Error fetching tracking details. Please try again later.");
-          });
-      }
+    <!-- SCRIPT CONTROLLING THE TRACKING FORM -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-      function toggleSection(element) {
-        var content = element.nextElementSibling;
-        if (content.style.display === "none") {
-          content.style.display = "block";
-        } else {
-          content.style.display = "none";
-        }
-      }
-    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <!-- END OF TRACKING FORM SCRIPT -->
   </body>
 </html>
