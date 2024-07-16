@@ -36,7 +36,9 @@
 }
 
 .tracking-details h2 {
-  margin-top: 0;
+  margin-top: 20;
+  text-align: center;
+  align-items: center;
 }
 
 .tracking-details-section {
