@@ -3,21 +3,58 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+    rel="stylesheet"
+    href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+  />
+  <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+  />
     <link rel="stylesheet" href="assets/styles/trackdetails.css" />
-    <title>Tracking Page</title>
+    <title>Tracking Details</title>
   </head>
   <body>
-    <div class="container">
-      <div class="tracking-form">
-        <input
-          type="text"
-          class="tracking-input"
-          placeholder="Enter Tracking Number"
-        />
-        <button class="tracking-button" onclick="displayTrackingDetails()">
-          Track
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">FastTrack</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
         </button>
-      </div>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">About</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="tracking.html">Tracking</a>
+            </li>
+
+            <li class="nav-item">
+              <a href="services.html" class="nav-link">Services</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">Contact</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+    </header>
+
+
+
       <div class="tracking-details">
         <h2>Tracking Details</h2>
         <div class="tracking-details-section">
@@ -54,65 +91,53 @@
       </div>
     </div>
 
-    <script>
-      function displayTrackingDetails() {
-        var trackingInput = document.querySelector(".tracking-input");
 
-        // Fetch tracking details from the API
-        fetch(
-          `https://your-api-endpoint.com/tracking?id=${trackingInput.value}`
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            // Update the tracking information based on the API response
-            document.getElementById("sender-name").textContent =
-              data.sender_name;
-            document.getElementById("sender-phone").textContent =
-              data.sender_phone;
-            document.getElementById("sender-email").textContent =
-              data.sender_email;
-            document.getElementById("sender-address").textContent =
-              data.sender_address;
+    <footer class="bg-dark text-white py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>FastTrack</h5>
+            <p>Reliable and efficient shipping solutions.</p>
+          </div>
+          <div class="col-md-3">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="index.html" class="text-white">Home</a></li>
+              <li><a href="tracking.html" class="text-white">Tracking</a></li>
+              <li><a href="about.html" class="text-white">About Us</a></li>
+              <li><a href="services.html" class="text-white">Services</a></li>
+              <li><a href="contact.html" class="text-white">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5>Follow Us</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-white"
+                  ><i class="fab fa-facebook-f"></i> Facebook</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white"
+                  ><i class="fab fa-twitter"></i> Twitter</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white"
+                  ><i class="fab fa-linkedin-in"></i> LinkedIn</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12 text-center">
+            <p class="mb-0">&copy; 2023 FastTrack. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
 
-            document.getElementById("receiver-name").textContent =
-              data.receiver_name;
-            document.getElementById("receiver-email").textContent =
-              data.receiver_email;
-            document.getElementById("receiver-phone").textContent =
-              data.receiver_phone;
-            document.getElementById("receiver-location").textContent =
-              data.receiver_location;
-
-            document.getElementById("tracking-id").textContent =
-              data.tracking_id;
-            document.getElementById("invoice-number").textContent =
-              data.invoice_number;
-            document.getElementById("shipment-date").textContent =
-              data.shipment_date;
-            document.getElementById("delivery-date").textContent =
-              data.delivery_date;
-            document.getElementById("weight").textContent = data.weight;
-            document.getElementById("quantity").textContent = data.quantity;
-            document.getElementById("mode-of-shipment").textContent =
-              data.mode_of_shipment;
-            document.getElementById("type-of-shipment").textContent =
-              data.type_of_shipment;
-          })
-          .catch((error) => {
-            // Handle any errors that occurred during the API request
-            console.error("Error fetching tracking details:", error);
-            alert("Error fetching tracking details. Please try again later.");
-          });
-      }
-
-      function toggleSection(element) {
-        var content = element.nextElementSibling;
-        if (content.style.display === "none") {
-          content.style.display = "block";
-        } else {
-          content.style.display = "none";
-        }
-      }
-    </script>
+    <script src="/Hub-Nexus-Tracker/assets/js/trackdetails.js"></script>
   </body>
 </html>
