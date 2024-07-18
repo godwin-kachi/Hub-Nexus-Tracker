@@ -53,3 +53,160 @@
 .tracking-details-content {
   display: none;
 }
+
+/* Steps on order */
+body {
+  color: #000;
+  overflow-x: hidden;
+  height: 100%;
+  background-color: #8c9eff;
+  background-repeat: no-repeat;
+}
+
+/* .card {
+  z-index: 0;
+  background-color: #eceff1;
+  padding-bottom: 20px;
+  margin-top: 90px;
+  margin-bottom: 90px;
+  border-radius: 10px;
+} */
+
+.top {
+  padding-top: 20px;
+  padding-left: 10% !important;
+  padding-right: 13% !important;
+}
+
+/*Icon progressbar*/
+#progressbar {
+  margin-bottom: 30px;
+  overflow: hidden;
+  color: #455a64;
+  padding-left: 0px;
+  margin-top: 30px;
+}
+
+#progressbar li {
+  list-style-type: none;
+  font-size: 13px;
+  width: 25%;
+  float: left;
+  position: relative;
+  font-weight: 400;
+}
+
+#progressbar .step0:before {
+  font-family: FontAwesome;
+  content: "\f10c";
+  color: #fff;
+}
+
+#progressbar li:before {
+  width: 40px;
+  height: 40px;
+  line-height: 45px;
+  display: block;
+  font-size: 20px;
+  background: #c5cae9;
+  border-radius: 50%;
+  margin: auto;
+  padding: 0px;
+}
+
+/*ProgressBar connectors*/
+#progressbar li:after {
+  content: "";
+  width: 100%;
+  height: 12px;
+  background: #c5cae9;
+  position: absolute;
+  left: 0;
+  top: 16px;
+  z-index: -1;
+}
+
+#progressbar li:last-child:after {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+  position: absolute;
+  left: -50%;
+}
+
+#progressbar li:nth-child(2):after,
+#progressbar li:nth-child(3):after {
+  left: -50%;
+}
+
+#progressbar li:first-child:after {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  position: absolute;
+  left: 50%;
+}
+
+#progressbar li:last-child:after {
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#progressbar li:first-child:after {
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+
+/*Color number of the step and the connector before it*/
+#progressbar li.active:before,
+#progressbar li.active:after {
+  background: #651fff;
+}
+.actived {
+  background-color: #651fff !important;
+  color: #fff;
+}
+.actives {
+  color: #fff !important;
+  font-weight: 700 !important;
+}
+
+#progressbar li.active:before {
+  font-family: FontAwesome;
+  content: "\f00c";
+}
+
+.icon {
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
+}
+
+.icon-content {
+  padding-bottom: 20px;
+  gap: 1rem;
+  align-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.accordion-button::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='white' class='bi bi-plus' viewBox='0 0 16 16'%3E%3Cpath d='M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4'/%3E%3C/svg%3E") !important;
+}
+.accordion-button:not(.collapsed)::after {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' fill='white' class='bi bi-dash' viewBox='0 0 16 16'%3E%3Cpath d='M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8'/%3E%3C/svg%3E") !important;
+}
+
+@media screen and (max-width: 992px) {
+  .icon-content {
+    width: 25%;
+    margin-top: -2rem;
+    gap: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 1rem;
+  }
+  .top {
+    padding: 0 !important;
+  }
+}
