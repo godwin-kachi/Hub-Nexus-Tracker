@@ -18,4 +18,5 @@ document.getElementById("tracking-form").addEventListener("submit", (event) => {
       console.error("Error validating tracking number:", error);
       alert("An error occurred while validating the tracking number.");
     });
+  
 });
