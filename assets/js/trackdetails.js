@@ -1,6 +1,12 @@
 const urlParams = new URLSearchParams(window.location.search);
 const trackingNumber = urlParams.get("trackingNumber");
 
+// Redirect to tracking page if tracking number is null
+if (trackingNumber == null || trackingNumber.trim() == "") {
+  window.location.href = "/tracking.html";
+}
+document.getElementById("t_no").innerText = trackingNumber;
+
 
 function displayTrackingDetails() {
 
