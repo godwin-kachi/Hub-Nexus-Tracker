@@ -10,6 +10,30 @@
   justify-content: center;
   margin-bottom: 20px;
 }
+th:nth-child(1) {
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.summation {
+  text-align: right;
+}
+
+.footer-bar,
+.header-bar {
+  height: 10px;
+  width: 100%;
+  background-color: #c3c3;
+}
 
 .tracking-input {
   padding: 8px 12px;
@@ -153,6 +177,8 @@ body {
 #progressbar li:first-child:after {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
+  /* background: #651fff; */
+
 }
 
 /*Color number of the step and the connector before it*/
@@ -160,6 +186,13 @@ body {
 #progressbar li.active:after {
   background: #651fff;
 }
+/* 
+#progressbar li.active:before {
+  background: #0e7947;
+}
+#progressbar li.active:after {
+  background: #651fff;
+} */
 .actived {
   background-color: #651fff !important;
   color: #fff;
