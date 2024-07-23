@@ -47,6 +47,9 @@ $package->package_id = $package_id;
 
 $stmt = $package->getPackage();
 
+// var_dump($stmt);
+// return;
+
 // check if more than 0 record found
 if ($stmt["outputStatus"] == 1000) {
      

@@ -1,15 +1,26 @@
 <?php
-include('../config/autoload.php');
+include('../config/autoloader.php');
 
 // required headers
-header("Access-Control-Allow-Origin:" . $ORIGIN);
-header("Content-Type:" . $CONTENT_TYPE);
-header("Access-Control-Allow-Methods:" . $POST_METHOD);
-header("Access-Control-Max-Age:" . $MAX_AGE);
-header("Access-Control-Allow-Headers:" . $ALLOWED_HEADERS);
+header("Access-Control-Allow-Origin:" . $configx["dbconnx"]["ORIGIN"]);
+header("Content-Type:" . $configx["dbconnx"]["CONTENT_TYPE"]);
+header("Accept:" . $configx["dbconnx"]["ACCEPT_TYPE"]);
+header("Access-Control-Allow-Methods:" . $configx["dbconnx"]['GET_METHOD']);
+header("Access-Control-Max-Age:$" . $configx["dbconnx"]['MAX_AGE']);
+header("Access-Control-Allow-Headers:" . $configx["dbconnx"]['ALLOWED_HEADERS']);
 
-// assignment
-$assignment = new Assignment();
+// initialize object
+$db = new Database($configx);
+$conn = $db->getConnection();
+
+// User gate will be implemented here
+
+
+
+
+// User gate ends here
+
+$package = new Package($conn);
 
 // get admin_no of user to be edited
 $data = json_decode(file_get_contents("php://input"));
@@ -24,7 +35,7 @@ if (empty($data->searchstring) || $data->searchstring == null || $data->searchst
     http_response_code(403);
 
     // tell the user
-    echo json_encode(array("message" => "Please provide what you are searching for", "status" => 2));
+    echo json_encode(["message" => "Please provide what you are searching for", "status" => 2]);
 
     return;
 }
@@ -35,7 +46,7 @@ if (empty($data->searchcolumn) || $data->searchcolumn == null || $data->searchco
     http_response_code(403);
 
     // tell the user
-    echo json_encode(array("message" => "Please provide a valid table column name to search in", "status" => 3));
+    echo json_encode(["message" => "Please provide a valid table column name to search in", "status" => 3]);
 
     return;
 }
@@ -43,8 +54,8 @@ if (empty($data->searchcolumn) || $data->searchcolumn == null || $data->searchco
 $searchString = cleanData($data->searchstring);
 $searchColumn = cleanData($data->searchcolumn);
 
-// Get the assignment whose details are to be updated 
-$search_stmt = $assignment->searchAssignment($searchString, $searchColumn);
+// Get the package whose details are to be updated 
+$search_stmt = $package->searchPackage($searchString, $searchColumn);
 
 // var_dump($search_stmt);
 // return;
@@ -57,15 +68,15 @@ if ($search_stmt['outputStatus'] == 1000) {
         // set response code -
         http_response_code(404);
 
-        // tell the assignment
-        echo json_encode(array("message" => "No assignment found for this search word : $searchString", "status" => 0));
+        // tell the package
+        echo json_encode(array("message" => "No package found for this search word : $searchString", "status" => 0));
         return;
     }
 
     // set response code - 200 ok
     http_response_code(400);
 
-    // tell the assignment
+    // tell the package
     echo json_encode(array("message" => "Success","result"=>$search_result, "status" => 1));
     return;
 } elseif ($search_stmt['outputStatus'] == 1200) {
@@ -77,6 +88,6 @@ if ($search_stmt['outputStatus'] == 1000) {
     // set response code - 503 service unavailable
     http_response_code(503);
 
-    // tell the assignment
-    echo json_encode(array("message" => "No assignment found for this search item", "status" => 200));
+    // tell the package
+    echo json_encode(array("message" => "No package found for this search item", "status" => 200));
 }
