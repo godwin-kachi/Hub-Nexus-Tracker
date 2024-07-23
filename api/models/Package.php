@@ -21,7 +21,7 @@ class Package
     public $service_price;
     public $delivery_type;
     public $delivery_price;
-    public $status;
+    public $delivery_status;
     public $comment;
     public $created_at;
     public $updated_at;
@@ -38,7 +38,9 @@ class Package
     {
 
         // select query if student ID is provided
-        $query = "SELECT * FROM $this->table_name WHERE package_id=$this->package_id";
+        // $query = "SELECT * FROM $this->table_name WHERE package_id=$this->package_id";
+
+        $query = "SELECT packages.*, pstatus.package_status_id, pstatus.ps_created_at, pstatus.ps_updated_at, plocation.package_loc, plocation.pl_created_at, plocation.pl_updated_at FROM $this->table_name LEFT JOIN pstatus ON packages.package_id=pstatus.package_id LEFT JOIN plocation ON packages.package_id=plocation.package_id WHERE packages.package_id=$this->package_id";
 
         // prepare query statement
         $select_stmt = $this->conn->prepare($query);
@@ -75,19 +77,33 @@ class Package
     // create user
     function createPackage()
     {
+        // Generate tracking no
+        $this->genTrackNo();
+
         // query to insert record
-        $query = "INSERT INTO " . $this->table_name . " (class_id, subject_id, term_id, session_id, staff_id, package) VALUES (:class_id, :subject_id, :term_id, :session_id, :staff_id, :package) ";
+        $query = "INSERT INTO $this->table_name (tracking_no, description, sender_name, sender_email, sender_phone, sender_address,receiver_name, receiver_email, receiver_phone, receiver_address, sending_loc, delivery_loc, service_price, delivery_type, delivery_price, delivery_status, comment ) VALUES (:tracking_no, :description, :sender_name, :sender_email, :sender_phone, :sender_address, :receiver_name, :receiver_email, :receiver_phone, :receiver_address, sending_loc, delivery_loc, service_price, delivery_type, delivery_price, delivery_status, comment ) ";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
 
         // bind values
-        $stmt->bindParam(":class_id", $this->class_id);
-        $stmt->bindParam(":subject_id", $this->subject_id);
-        $stmt->bindParam(":term_id", $this->term_id);
-        $stmt->bindParam(":session_id", $this->session_id);
-        $stmt->bindParam(":staff_id", $this->staff_id);
-        $stmt->bindParam(":package", $this->package);
+        $stmt->bindParam(":tracking_no", $this->tracking_no);
+        $stmt->bindParam(":description", $this->description);
+        $stmt->bindParam(":sender_name", $this->sender_name);
+        $stmt->bindParam(":sender_email", $this->sender_email);
+        $stmt->bindParam(":sender_phone", $this->sender_phone);
+        $stmt->bindParam(":sender_address", $this->sender_address);
+        $stmt->bindParam(":receiver_name", $this->receiver_name);
+        $stmt->bindParam(":receiver_email", $this->receiver_email);
+        $stmt->bindParam(":receiver_phone", $this->receiver_phone);
+        $stmt->bindParam(":receiver_address", $this->receiver_address);
+        $stmt->bindParam(":sending_loc", $this->sending_loc);
+        $stmt->bindParam(":delivery_loc", $this->delivery_loc);
+        $stmt->bindParam(":service_price", $this->service_price);
+        $stmt->bindParam(":delivery_type", $this->delivery_type);
+        $stmt->bindParam(":delivery_price", $this->delivery_price);
+        $stmt->bindParam(":delivery_status", $this->delivery_status);
+        $stmt->bindParam(":comment", $this->comment);
 
         try {
             $stmt->execute();
@@ -104,27 +120,49 @@ class Package
         $this->updated_at = date("Y:m:d H:i:sa");
 
         // update query
-        $query = "UPDATE " . $this->table_name . " SET 
-                class_id = :class_id,
-                subject_id = :subject_id,
-                term_id = :term_id,
-                session_id = :session_id,
-                 staff_id = :staff_id,
-                 package = :package,
-                 updated_at = :updated_at
+        $query = "UPDATE $this->table_name SET 
+                tracking_no = :tracking_no,
+                description = :description,
+                sender_name = :sender_name,
+                sender_email = :sender_email,
+                sender_phone = :sender_phone,
+                sender_address = :sender_address,
+                receiver_name = :receiver_name,
+                receiver_email = :receiver_email,
+                receiver_phone = :receiver_phone,
+                receiver_address = :receiver_address,
+                sending_loc = :sending_loc,
+                delivery_loc = :delivery_loc,
+                service_price = :service_price,
+                delivery_type = :delivery_type,
+                delivery_price = :delivery_price,
+                delivery_status = :delivery_status,
+                comment = :comment,
+                updated_at = :updated_at
                  WHERE
                  package_id = :package_id";
 
         // prepare query statement
         $update_stmt = $this->conn->prepare($query);
 
-        // bind new values
-        $update_stmt->bindParam(':class_id', $this->class_id);
-        $update_stmt->bindParam(':subject_id', $this->subject_id);
-        $update_stmt->bindParam(':term_id', $this->term_id);
-        $update_stmt->bindParam(':session_id', $this->session_id);
-        $update_stmt->bindParam(':staff_id', $this->staff_id);
-        $update_stmt->bindParam(':package', $this->package);
+        // bind values
+        $update_stmt->bindParam(":tracking_no", $this->tracking_no);
+        $update_stmt->bindParam(":description", $this->description);
+        $update_stmt->bindParam(":sender_name", $this->sender_name);
+        $update_stmt->bindParam(":sender_email", $this->sender_email);
+        $update_stmt->bindParam(":sender_phone", $this->sender_phone);
+        $update_stmt->bindParam(":sender_address", $this->sender_address);
+        $update_stmt->bindParam(":receiver_name", $this->receiver_name);
+        $update_stmt->bindParam(":receiver_email", $this->receiver_email);
+        $update_stmt->bindParam(":receiver_phone", $this->receiver_phone);
+        $update_stmt->bindParam(":receiver_address", $this->receiver_address);
+        $update_stmt->bindParam(":sending_loc", $this->sending_loc);
+        $update_stmt->bindParam(":delivery_loc", $this->delivery_loc);
+        $update_stmt->bindParam(":service_price", $this->service_price);
+        $update_stmt->bindParam(":delivery_type", $this->delivery_type);
+        $update_stmt->bindParam(":delivery_price", $this->delivery_price);
+        $update_stmt->bindParam(":delivery_status", $this->delivery_status);
+        $update_stmt->bindParam(":comment", $this->comment);
 
         $update_stmt->bindParam(':updated_at', $this->updated_at);
 
@@ -132,6 +170,7 @@ class Package
 
         try {
             $update_stmt->execute();
+            // stmt return true if suucesful and false if failed
             return ["output" => $update_stmt, "outputStatus" => 1000];
         } catch (Exception $e) {
             return ["output" => $e->getMessage(), "eror" => "Netork issue. Please try again.", "outputStatus" => 1200];
@@ -142,7 +181,7 @@ class Package
     function deletePackage()
     {
         // delete query
-        $query = "DELETE FROM " . $this->table_name . " WHERE package_id = ?";
+        $query = "DELETE FROM $this->table_name WHERE package_id = ?";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -153,6 +192,7 @@ class Package
         try {
 
             $stmt->execute();
+            // stmt return true if suucesful and false if failed
             return ["output" => $stmt, "outputStatus" => 1000];
         } catch (Exception $e) {
 
@@ -166,9 +206,9 @@ class Package
     {
 
         // select all query
-        // $query = "SELECT * FROM " . $this->table_name . " WHERE '$col' LIKE '%$searchstring%'";
-        $query = "SELECT * FROM $this->table_name WHERE $col LIKE '%$searchstring%'";
+        // $query = "SELECT * FROM $this->table_name WHERE $col LIKE '%$searchstring%'";
 
+        $query = "SELECT packages.*, pstatus.package_status_id, pstatus.ps_created_at, pstatus.ps_updated_at, plocation.package_loc, plocation.pl_created_at, plocation.pl_updated_at FROM $this->table_name LEFT JOIN pstatus ON packages.package_id=pstatus.package_id LEFT JOIN plocation ON packages.package_id=plocation.package_id WHERE packages.$col LIKE '%$searchstring%'";
 
         // prepare query statement
         $update_stmt = $this->conn->prepare($query);
@@ -182,6 +222,15 @@ class Package
 
             return ["output" => $e->getMessage(), "outputStatus" => 1200];
         }
+    }
+
+
+    // Generates package tracking number
+    private function genTrackNo(){
+
+        $this->tracking_no = "TRKNO" . Date("YmdHis") . substr(md5(time()), 0, 12);
+
+        return;
     }
 
 
