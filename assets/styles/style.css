@@ -16,23 +16,12 @@ body {
 
 .nav-link {
     font-weight: 500;
-    color: var(--light-color) !important;
+    color: var(--light-color);
     transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-    color: #fff !important;
-}
-
-.carousel-caption h5 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-}
-
-.carousel-caption p {
-    font-size: 1.25rem;
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    color: #fff;
 }
 
 .btn-primary {
@@ -155,14 +144,17 @@ body {
 }
 
 .team-section .team-member {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     text-align: center;
     margin-bottom: 40px;
 }
 
 .team-section .team-member img {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
+    width: 100%;
+    max-width: 200px; 
+    height: auto;
     border-radius: 50%;
     margin-bottom: 20px;
 }
@@ -186,6 +178,7 @@ body {
     border-radius: 5px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
+
 .testimonial-section .testimonial-item img {
     width: 80px;
     height: 80px;
@@ -261,4 +254,82 @@ body {
 
 .footer .social-icons a:hover {
     background-color: #0056b3;
+}
+
+.carousel-item img {
+    object-fit: cover; 
+    height: 60vh; 
+}
+
+.carousel-caption {
+    bottom: 20px; 
+}
+
+.carousel-caption h5 {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff; 
+}
+
+.carousel-caption p {
+    font-size: 1rem; 
+    color: #fff;
+}
+
+.carousel-caption a {
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 1rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .carousel-caption h5 {
+        font-size: 1.25rem;
+    }
+
+    .carousel-caption p {
+        font-size: 0.875rem;
+    }
+
+    .team-member img {
+        max-width: 150px; 
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-item img {
+        height: 50vh; 
+    }
+
+    .carousel-caption h5 {
+        font-size: 1rem;
+    }
+
+    .carousel-caption p {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 320px) {
+    .carousel-item img {
+        height: 40vh; 
+    }
+
+    .carousel-caption {
+        padding: 10px; 
+    }
+
+    .carousel-caption h5 {
+        font-size: 0.875rem; 
+    }
+
+    .carousel-caption p {
+        font-size: 0.75rem; 
+    }
+
+    .carousel-caption a {
+        padding: 8px 16px; 
+        font-size: 0.75rem; 
+    }
 }
