@@ -34,7 +34,11 @@ include('./config/functions.php');
 // }
 
 
-$test_data = "test&1234";
+// $test_data = "test&1234";
 
-$test2 = cleanData($test_data);
-echo $test2;
+// $test2 = cleanData($test_data);
+// echo $test2;
+
+echo "TRKNO" . Date("YmdHis") . substr(md5(time()), 0, 18);
+echo "<br />";
+echo "TRKNO" . Date("YmdHis") . substr(md5(time()), 0, 12);
