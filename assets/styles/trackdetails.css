@@ -10,6 +10,30 @@
   justify-content: center;
   margin-bottom: 20px;
 }
+th:nth-child(1) {
+  text-align: center;
+}
+
+.title {
+  text-align: center;
+  margin: 10px 0;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.summation {
+  text-align: right;
+}
+
+.footer-bar,
+.header-bar {
+  height: 10px;
+  width: 100%;
+  background-color: #c3c3;
+}
 
 .tracking-input {
   padding: 8px 12px;
