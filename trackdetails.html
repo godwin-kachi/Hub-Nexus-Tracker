@@ -50,7 +50,7 @@
             <li class="active step0"></li>
             <li class="step0 active"></li>
             <li class="step0 active"></li>
-            <li class="step0 active" ></li>
+            <li class="step0 active"></li>
           </ul>
         </div>
       </div>
@@ -305,26 +305,76 @@
               class="accordion-collapse collapse"
               data-bs-parent="#accordionExample"
             >
-              <div class="accordion-body ">
-                <div class="container-fluid">
-                  <div class="text-center">
-                  <div class="brand">
-                    <h2>Delivery</h2>
+              <div class="accordion-body">
+                <div class="header-bar"></div>
+                <div class="header">
+                  <div class="title">
+                    <h2>Invoice</h2>
                   </div>
-                  <div class="header d-flex justify-content-between align-items-center" style="border: 1px solid black;">
-                    <div class="bizaddress">
-                      <p>123 Ikenegbu, Owerri</p>
-                      <p>908839484</p>
+                  <div class="details">
+                    <div class="company_details">
+                      <p class="coy_name">Your company name</p>
+                      <p class="street_address">
+                        Your company street address
+                        <br />
+                        City,
+                        <br />State <br />Country
+                      </p>
                     </div>
-                    <div class="invoice">
-                      <p>Invoice Number: 1234567890</p>
-                      <p>Date: 12-09-2023</p>
+                    <div class="recipient_details">
+                      <p class="recipient_name">Your company name</p>
+                      <p class="recipient_address">
+                        Your company street address
+                        <br />
+                        City,
+                        <br />State <br />Country <br />Postal Code
+                      </p>
                     </div>
-                    <hr>
-                    
+                    <div class="invoice_details">
+                      <p class="invoice_no">
+                        # <span id="invoice_id">0009</span>
+                      </p>
+                      <br />
+                      <p class="invoice_date">
+                        Date: <span id="invoice_date">10-10-24</span>
+                      </p>
+                    </div>
                   </div>
-                 
                 </div>
+                <hr />
+                <div class="invoice_body">
+                  <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">Description</th>
+                        <th scope="col">Qty</th>
+                        <th scope="col">Unit Price</th>
+                        <th scope="col">Total</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <td>Product 1</td>
+                        <td>10</td>
+                        <td>$100.00</td>
+                        <td>$1000.00</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                  <div class="summation">
+                    <p>Subtotal:</p>
+                    <p>Tax</p>
+                    <p>Total:</p>
+                    <p>Shipping:</p>
+                    <p>Total Due:</p>
+                  </div>
+                </div>
+                <div class="footer">
+                  <p>Thank you for your business!</p>
+                  <p>Regards,</p>
+                  <p>Your Name</p>
+                </div>
+                <div class="footer-bar"></div>
               </div>
             </div>
           </div>
