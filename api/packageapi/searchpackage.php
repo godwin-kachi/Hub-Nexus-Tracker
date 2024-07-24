@@ -1,5 +1,5 @@
 <?php
-include('../config/autoloader.php');
+include '../config/autoloader.php';
 
 // required headers
 header("Access-Control-Allow-Origin:" . $configx["dbconnx"]["ORIGIN"]);
@@ -69,15 +69,15 @@ if ($search_stmt['outputStatus'] == 1000) {
         http_response_code(404);
 
         // tell the package
-        echo json_encode(array("message" => "No package found for this search word : $searchString", "status" => 0));
+        echo json_encode(["message" => "No package found for this search word : $searchString", "status" => 0]);
         return;
     }
 
     // set response code - 200 ok
-    http_response_code(400);
+    http_response_code(200);
 
     // tell the package
-    echo json_encode(array("message" => "Success","result"=>$search_result, "status" => 1));
+    echo json_encode(["message" => "Success","result"=>$search_result, "status" => 1]);
     return;
 } elseif ($search_stmt['outputStatus'] == 1200) {
     errorDiag($search_stmt['output']);
@@ -89,5 +89,5 @@ if ($search_stmt['outputStatus'] == 1000) {
     http_response_code(503);
 
     // tell the package
-    echo json_encode(array("message" => "No package found for this search item", "status" => 200));
+    echo json_encode(["message" => "No package found for this search item", "status" => 200]);
 }
