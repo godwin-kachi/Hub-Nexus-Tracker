@@ -4,9 +4,9 @@ include '../config/autoloader.php';
 // required headers
 header("Access-Control-Allow-Origin:" . $configx["dbconnx"]["ORIGIN"]);
 header("Content-Type:" . $configx["dbconnx"]["CONTENT_TYPE"]);
-header("Access-Control-Allow-Methods:" . $configx["dbconnx"]['GET_METHOD']);
-header("Access-Control-Max-Age:$" . $configx["dbconnx"]['MAX_AGE']);
-header("Access-Control-Allow-Headers:" . $configx["dbconnx"]['ALLOWED_HEADERS']);
+header("Access-Control-Allow-Methods:" . $configx["dbconnx"]["GET_METHOD"]);
+header("Access-Control-Max-Age:$" . $configx["dbconnx"]["MAX_AGE"]);
+header("Access-Control-Allow-Headers:" . $configx["dbconnx"]["ALLOWED_HEADERS"]);
 
 // initialize object
 $db = new Database($configx);
@@ -16,8 +16,6 @@ $package = new Package($conn);
 
 $stmt = $package->getAllPackages();
 
-var_dump($stmt);
-return;
 // check if more than 0 record found
 if ($stmt["outputStatus"] == 1000) {
      
@@ -31,7 +29,7 @@ if ($stmt["outputStatus"] == 1000) {
         http_response_code(404);
 
         // show assignments data in json format
-        echo json_encode(array("message" => "No assignment found.", "status"=>1));
+        echo json_encode(["message" => "No assignment found.", "status"=>1]);
 
         return;
     }
