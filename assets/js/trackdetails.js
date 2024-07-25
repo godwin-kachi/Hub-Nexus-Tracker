@@ -26,7 +26,7 @@ const receiverPhoneNumber = document.getElementById("receiverPhoneNumber");
 const receiverAddress = document.getElementById("receiverAddress");  
 
 const apiurl = location.protocol + "//" + location.hostname + "/api";
-console.log(apiurl + `/packageapi/searchpackage.php?tracking_no=${trackingNumber}`);
+// console.log(apiurl + `/packageapi/searchpackage.php?tracking_no=${trackingNumber}`);
 
 
 const searchData = {
@@ -36,7 +36,6 @@ const searchData = {
 
 const configData = {
   method: 'POST',
-  mode: 'no-cors',
   headers: {
     "Content-Type": "application/json",
     "Accept": "application/json"
@@ -51,7 +50,7 @@ function displayTrackingDetails() {
 
     // Fetch tracking details from the API
   // fetch(apiurl + `/packageapi/searchpackage.php?tracking_no=${trackingNumber}`, configData)
-  fetch(apiurl+"/packageapi/getpackages.php", {mode: "no-cors"})
+  fetch(apiurl+"/packageapi/searchpackages.php", searchData)
       .then((response) => response.json())
       .then((data) => {
 
