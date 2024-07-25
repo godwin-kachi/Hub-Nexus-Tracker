@@ -1,22 +1,32 @@
 <?php
-include('../config/autoload.php');
+include '../config/autoloader.php';
+
 // required headers
-header("Access-Control-Allow-Origin:" . $ORIGIN);
-header("Content-Type:" . $CONTENT_TYPE);
-header("Access-Control-Allow-Methods:" . $POST_METHOD);
-header("Access-Control-Max-Age:" . $MAX_AGE);
-header("Access-Control-Allow-Headers:" . $ALLOWED_HEADERS);
+header("Access-Control-Allow-Origin:" . $configx["dbconnx"]["ORIGIN"]);
+header("Content-Type:" . $configx["dbconnx"]["CONTENT_TYPE"]);
+header("Accept:" . $configx["dbconnx"]["ACCEPT_TYPE"]);
+header("Access-Control-Allow-Methods:" . $configx["dbconnx"]['POST_METHOD']);
+header("Access-Control-Max-Age:$" . $configx["dbconnx"]['MAX_AGE']);
+header("Access-Control-Allow-Headers:" . $configx["dbconnx"]['ALLOWED_HEADERS']);
 
 
-// Initiatialise 
-$assignment = new Assignment();
+// initialize object
+$db = new Database($configx);
+$conn = $db->getConnection();
+
+// User gate will be implemented here
+
+
+
+
+// User gate ends here
+
+$package = new Package($conn);
 
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
-// var_dump($data);
-// return;
-http_response_code(201);
-echo json_encode(array("message" => $data, "status" => 1));
+
+var_dump($data);
 return;
 
 // make sure data is not empty

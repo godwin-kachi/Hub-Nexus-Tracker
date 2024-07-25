@@ -1,51 +1,42 @@
-fetch('getpackages.php')
-.then(response => response.json())
-.then(data => {
-  const shipmentTbody = document.getElementById('shipment-tbody');
+const row = document.getElementById("shipment_table");
 
-  data.forEach(shipment => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${shipment.trackingNumber}</td>
-      <td>${shipment.sender}</td>
-      <td>${shipment.recipient}</td>
-      <td>${shipment.status}</td>
-      <td>
-        <a href="view-shipment.html?trackingNumber=${shipment.trackingNumber}" class="btn btn-primary btn-sm">View</a>
-        <a href="edit-shipment.html?trackingNumber=${shipment.trackingNumber}" class="btn btn-secondary btn-sm">Edit</a>
-        <button class="btn btn-danger btn-sm delete-btn" data-tracking-number="${shipment.trackingNumber}">Delete</button>
-      </td>
-    `;
-    shipmentTbody.appendChild(row);
-  });
+const verifier = JSON.parse(sessionStorage.getItem("admintracker"));
 
-  // Add event listener for delete buttons
-  const deleteButtons = document.querySelectorAll('.delete-btn');
-  deleteButtons.forEach(button => {
-    button.addEventListener('click', deleteShipment);
-  });
-})
-.catch(error => console.error('Error fetching shipments:', error));
+// Page auth protector
+// if (!verifier) {
+//   window.location.href = "../admin/admin-login.html";
+// }
+const apiurl = `${location.protocol}//${location.hostname}/api`;
+const pac_status = ["Order Processed", "Order Shipped", "Order Arrived", "Order Completed"]
 
-// Function to delete a shipment
-function deleteShipment(event) {
-const trackingNumber = event.target.dataset.trackingNumber;
+// Fetch all shipments from the API
+fetch(`${apiurl}/packageapi/getpackages.php`)
+.then((response) => response.json())
+  .then((shipments) => {
 
-if (confirm(`Are you sure you want to delete the shipment with tracking number ${trackingNumber}?`)) {
-  fetch(`/api/shipments/${trackingNumber}`, {
-    method: 'DELETE'
+    // Display shipments in the table
+    row.innerHTML = "";
+    shipments.result.forEach((shipment) => {
+            
+      row.innerHTML += `
+          <td id="p_id">${shipment.package_id}</td>
+           <td id="p_tno">${shipment.tracking_no}</td>
+          <td id="p_desc">${shipment.description}</td>
+          <td id="p_qty">${shipment.quantity}</td>
+          <td id="p_cus_name">${shipment.sender_name}</td>
+          <td id="p_ship_date">${shipment.created_at}</td>
+          <td id="pdel_date">${shipment.delivery_loc}</td>
+          <td id="p_ship_cost">${shipment.service_price}</td>
+          <td id="p_cur_loc">${shipment.sending_loc}</td>
+          <td id="p_ship_status">${pac_status[shipment.delivery_status]}</td>
+          <td>
+            <a href="view-shipment.html?package_id=${shipment.package_id}" class="btn btn-primary">View</a>
+            <a href="edit-shipment.html?package_id=${shipment.package_id}" class="btn btn-primary">Edit</a>
+            <button type="button" class="btn btn-danger" onclick="deleteShipment(${shipment.package_id})">
+              Del
+            </button>
+          </td>
+      `;
+    });
   })
-  .then(response => {
-    if (response.ok) {
-      // Remove the deleted row from the table
-      event.target.closest('tr').remove();
-      console.log(`Shipment with tracking number ${trackingNumber} deleted successfully.`);
-    } else {
-      console.error(`Error deleting shipment with tracking number ${trackingNumber}.`);
-    }
-  })
-  .catch(error => {
-    console.error('Error deleting shipment:', error);
-  });
-}
-}
+  .catch((error) => console.error("Error:", error));

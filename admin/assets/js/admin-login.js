@@ -15,10 +15,11 @@ form.addEventListener("submit", (event) => {
     cors: "no-cors",
     headers: {
       "Content-Type": "application/json",
-      Accept: "application/json",
+      "Accept": "application/json"
     },
-    body: JSON.stringify(logCredentials),
+    body: JSON.stringify(logCredentials)
   };
 
   // Write the fetch request below
+  console.log("submitted")
 });
