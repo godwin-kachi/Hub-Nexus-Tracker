@@ -30,9 +30,9 @@ fetch(`${apiurl}/packageapi/getpackages.php`)
           <td id="p_cur_loc">${shipment.sending_loc}</td>
           <td id="p_ship_status">${pac_status[shipment.delivery_status]}</td>
           <td>
-            <a href="view-shipment.html?package_id=${shipment.package_id}" class="btn btn-primary">View</a>
-            <a href="edit-shipment.html?package_id=${shipment.package_id}" class="btn btn-primary">Edit</a>
-            <button type="button" class="btn btn-danger" onclick="deleteShipment(${shipment.package_id})">
+            <a href="view-shipment.html?package_id=${shipment.package_id}" class="btn btn-primary py-0 pb-1">View</a>
+            <a href="edit-shipment.html?package_id=${shipment.package_id}" class="btn btn-primary py-0 pb-1">Edit</a>
+            <button type="button" class="btn btn-danger p-0" onclick="deleteShipment(${shipment.package_id})">
               Del
             </button>
           </td>

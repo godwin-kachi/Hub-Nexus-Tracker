@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -32,7 +33,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="#"
+                  <a class="nav-link active" aria-current="page" href="admin.html"
                     >Home</a
                   >
                 </li>
@@ -40,6 +41,11 @@
                 <li class="nav-item">
                   <a class="nav-link" href="create-shipment.html"
                     >Create Shipment</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="analytics.html"
+                    >Analytics</a
                   >
                 </li>
               </ul>
@@ -50,8 +56,14 @@
                   placeholder="Search"
                   aria-label="Search"
                 />
-                <button class="btn btn-outline-success" type="submit">
+                <button class="btn btn-outline-success text-white" type="submit">
                   Search
+                </button>
+              </form>
+
+              <form class="d-flex mx-3" id="logoutbtn">
+                <button class="btn btn-outline-success btn-danger text-white py-0 pb-1" type="submit">
+                  Logout
                 </button>
               </form>
             </div>
@@ -76,7 +88,7 @@
           </tr>
         </thead>
         <tbody id="shipment_table">
-          <!-- <td id="p_id">2</td>
+          <td id="p_id">2</td>
           <td id="p_tno">TRKNO12345678</td>
           <td id="p_desc">Stallion Rice</td>
           <td id="p_qty">2 bags</td>
@@ -87,12 +99,12 @@
           <td id="p_cur_loc">Ondo</td>
           <td id="p_ship_status">Order Shipper</td>
           <td>
-            <a href="view-shipment.html?package_id=${package_id}" class="btn btn-primary">View</a>
-            <a href="edit-shipment.html?package_id=${package_id}" class="btn btn-primary">Edit</a>
-            <button type="button" class="btn btn-danger" onclick="deleteShipment(package_id)">
+            <a href="view-shipment.html?vmode=1&package_id=1" class="btn btn-primary py-0 pb-1">View</a>
+            <a href="edit-shipment.html?vmode=2&package_id=1" class="btn btn-primary py-0 pb-1">Edit</a>
+            <button type="button" class="btn btn-danger" onclick="deleteShipment(1)">
               Del
             </button>
-          </td> -->
+          </td>
         </tbody>
       </table>
     </div>

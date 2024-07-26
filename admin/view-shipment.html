@@ -35,77 +35,301 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav ml-auto">
+                 <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="admin.html"
+                    >Home</a
+                  >
+                </li>
+
                 <li class="nav-item">
-                  <a class="nav-link" href="admin.html">Home</a>
+                  <a class="nav-link" href="create-shipment.html"
+                    >Create Shipment</a
+                  >
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="analytics.html"
+                    >Analytics</a
+                  >
                 </li>
               </ul>
             </div>
+            <form class="d-flex" id="logoutbtn">
+              <button class="btn btn-outline-success btn-danger text-white py-0 pb-1" type="submit">
+                Logout
+              </button>
+            </form>
           </nav>
       
       </header>
 
-  <main>
-    <div class="view-shipment">
-      <div class="container">
-        <div class="card">
-          <div class="card-header">
-            <h4 class="mb-0">View Shipment</h4>
-          </div>
-          <div class="card-body">
-            <div class="form-group">
-              <label for="tracking-number">Tracking Number</label>
-              <p id="tracking-number"></p>
-            </div>
-            <div class="form-group">
-              <label for="sender-name">Sender Name</label>
-              <p id="sender-name"></p>
-            </div>
-            <div class="form-group">
-              <label for="sender-address">Sender Address</label>
-              <p id="sender-address"></p>
-            </div>
-            <div class="form-group">
-              <label for="recipient-name">Recipient Name</label>
-              <p id="recipient-name"></p>
-            </div>
-            <div class="form-group">
-              <label for="recipient-address">Recipient Address</label>
-              <p id="recipient-address"></p>
-            </div>
-            <div class="form-group">
-              <label for="package-weight">Package Weight (kg)</label>
-              <p id="package-weight"></p>
-            </div>
-            <div class="form-group">
-              <label for="package-length">Package Length (cm)</label>
-              <p id="package-length"></p>
-            </div>
-            <div class="form-group">
-              <label for="package-width">Package Width (cm)</label>
-              <p id="package-width"></p>
-            </div>
-            <div class="form-group">
-              <label for="package-height">Package Height (cm)</label>
-              <p id="package-height"></p>
-            </div>
-            <div class="form-group">
-              <label for="status">Status</label>
-              <p id="status"></p>
-            </div>
-            <div class="form-group">
-              <label for="created-at">Created At</label>
-              <p id="created-at"></p>
-            </div>
-            <div class="form-group">
-              <label for="updated-at">Updated At</label>
-              <p id="updated-at"></p>
+      <main>
+        <div class="edit-shipment">
+          <div class="container">
+            <div class="card">
+              <div class="card-header">
+                <h4 class="mb-0">Shipment Details</h4>
+              </div>
+              <div class="card-body">
+                <form id="view-shipment-form">
+                  <div class="form-group">
+                    <label for="pack_id">Package ID : </label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="pack_id"
+                      name="pack_id"
+                      readonly
+                    />
+                  </div>
+                    <div class="form-group">
+                      <label for="track_no">Tracking No : </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="track_no"
+                        name="track_no"
+                        readonly
+                      />
+                    </div>
+  
+                      <div class="form-group">
+                        <label for="pack_desc">Description</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="pack_desc"
+                          name="pack_desc"
+                          readonly
+                        />
+                      </div>
+  
+                 <div class="form-group">
+                          <label for="pack_qty">Quantity</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="pack_qty"
+                            name="pack_qty"
+                            readonly
+                          />
+                  </div>
+                  <div class="form-group">
+                    <label for="sender_name">Sender Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="sender_name"
+                      name="sender_name"
+                      readonly
+                    />
+                  </div>
+  
+                    <div class="form-group">
+                      <label for="sender_email">Sender Email</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="sender_email"
+                        name="sender_email"
+                        readonly
+                      />
+                    </div>
+  
+                      <div class="form-group">
+                        <label for="sender_phone">Sender Phone</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="sender_phone"
+                          name="sender_name"
+                          readonly
+                        />
+                      </div>
+  
+                  <div class="form-group">
+                          <label for="sender_adresss">Sender Adresss</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="sender_adresss"
+                            name="sender_name"
+                            readonly
+                          />
+                  </div>
+                  <div class="form-group">
+                    <label for="receiver_name">Receiver Name</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="receiver_name"
+                      name="receiver_name"
+                      readonly
+                    />
+                  </div>
+  
+                    <div class="form-group">
+                      <label for="receiver_email">Receiver Email</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="receiver_email"
+                        name="receiver_email"
+                        readonly
+                      />
+                    </div>
+  
+                      <div class="form-group">
+                        <label for="receiver_phone">Receiver Phone</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="receiver_phone"
+                          name="receiver_name"
+                          readonly
+                        />
+                      </div>
+  
+                  <div class="form-group">
+                          <label for="receiver_adresss">Receiver Adresss</label>
+                          <input
+                            type="text"
+                            class="form-control"
+                            id="receiver_adresss"
+                            name="receiver_name"
+                            disabled
+                          />
+                  </div>
+  
+                  <div class="form-group">
+                    <label for="sending_loc">Sending Location</label>
+                    <text
+                      class="form-control"
+                      id="sending_loc"
+                      name="sending_loc"
+                      readonly
+                    >
+                    </text>
+                  </div>
+                  <div class="form-group">
+                    <label for="del_loc">Pickup Location</label>
+                    <input type="text"
+                      class="form-control"
+                      id="del_loc"
+                      name="del_loc"
+                      readonly
+                      cols="3"
+                    >
+                  </div>
+                  <div class="form-group">
+                    <label for="shipping_cost">Shipping Cost</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="shipping_cost"
+                      name="shipping_cost"
+                      readonly
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="delivery-type">Delivery Type</label>
+                    <select
+                  class="form-control"
+                  id="del_type" name="del_type" disabled
+                >
+                  <option value="0">Office Pickup</option>
+                  <option value="1">Home Delivery</option>
+                </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="delivrry_cost">Delivery Cost</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="delivrry_cost"
+                      name="delivrry_cost"
+                      readonly
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="total_cost">Total Cost</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="total_cost"
+                      name="total_cost"
+                      readonly
+                    />
+                  </div>
+                 
+                  <div class="form-group">
+                    <label for="delivrry_cost">Delivery Status</label>
+                      <select class="form-control" id="del_status" disabled="disabled">
+                      <option value="0">Order Processed</option>
+                      <option value="1">Order Shipped</option>
+                      <option value="2">Order Arrived</option>
+                      <option value="3">Order Completed</option>
+                    </select>
+                  </div>
+  
+                  <div class="form-group">
+                    <label for="comment">Comment</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="comment"
+                      name="comment"
+                      readonly
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="shipment_date">Order Placement Date</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="shipment_date"
+                      name="shipment_date"
+                      readonly
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="update_date">Last Order Update Date</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="update_date"
+                      name="update_date"
+                      readonly
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="cur_loc">Current Location</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="cur_loc"
+                      name="cur_loc"
+                      disabled
+                    />
+                  </div>
+  
+                  <input type="button" class="btn btn-primary" id="edit_btn" value="EDIT PACKAGE">
+                   <input type="submit" class="btn btn-success" id="save_btn" value="SAVE PACKAGE">
+                   <input type="button" class="btn btn-primary" id="edit_status_btn" value="EDIT PACAKGE STATUS">
+                   <input type="button" class="btn btn-success" id="save_status_btn" value="SAVE NEW PACAKGE STATUS">
+                   <input type="button" class="btn btn-primary" id="edit_loc_btn" value="EDIT PACKAGE LOCATION">
+                   <input type="button" class="btn btn-success" id="save_loc_btn" value="SAVE NEW PACKAGE LOCATION">
+
+
+                </form>
+              
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </main>
+      </main>
+  
+  <script src="assets/js/view-shipment.js"></script>
+  <script src="assets/js/edit-shipment.js"></script>
 
-  <script src="view-shipment.js"></script>
 </body>
 </html>
