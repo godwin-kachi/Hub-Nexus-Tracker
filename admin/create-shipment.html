@@ -50,13 +50,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="admin.html"
-                >Home</a
+              <a class="nav-link" aria-current="page" href="admin.html"
+                >Dashboard</a
               >
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="create-shipment.html"
+              <a class="nav-link active" href="create-shipment.html"
                 >Create Shipment</a
               >
             </li>
@@ -85,7 +85,6 @@
             </div>
             <div class="card-body">
               <form id="create-shipment-form">
-
                 <div class="form-group">
                   <label for="pack_desc">Description</label>
                   <input
@@ -186,12 +185,12 @@
 
                 <div class="form-group">
                   <label for="sending_loc">Sending Location</label>
-                  <text
+                  <input
+                    type="text"
                     class="form-control"
                     id="sending_loc"
                     name="sending_loc"
-                  >
-                  </text>
+                  />
                 </div>
                 <div class="form-group">
                   <label for="del_loc">Pickup Location</label>
@@ -200,7 +199,6 @@
                     class="form-control"
                     id="del_loc"
                     name="del_loc"
-                    cols="3"
                   />
                 </div>
                 <div class="form-group">
@@ -214,15 +212,12 @@
                 </div>
                 <div class="form-group">
                   <label for="delivery-type">Delivery Type</label>
-                  <select
-                  class="form-control"
-                  id="del_type" name="del_type"
-                >
-                  <option value="0">Office Pickup</option>
-                  <option value="1">Home Delivery</option>
-                </select>
+                  <select class="form-control" id="del_type" name="del_type">
+                    <option value="0">Office Pickup</option>
+                    <option value="1">Home Delivery</option>
+                  </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group" style="display: none">
                   <label for="delivrry_cost">Delivery Cost</label>
                   <input
                     type="text"
@@ -243,19 +238,6 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="delivrry_cost">Delivery Status</label>
-                  <select
-                    class="form-control"
-                    id="del_status" name="del_status"
-                  >
-                    <option value="0">Order Processed</option>
-                    <option value="1">Order Shipped</option>
-                    <option value="2">Order Arrived</option>
-                    <option value="3">Order Completed</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
                   <label for="comment">Comment</label>
                   <input
                     type="text"
@@ -264,18 +246,12 @@
                     name="comment"
                   />
                 </div>
-                <div class="form-group">
-                  <label for="shipment_date">Shipment Date</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="shipment_date"
-                    name="shipment_date"
-                  />
-                </div>
 
-                <input type="submit" class="btn btn-primary" value="EDIT" />
-                <input type="submit" class="btn btn-success" value="SAVE" />
+                <input
+                  type="submit"
+                  class="btn btn-primary"
+                  value="CREATE SHIPMENT"
+                />
               </form>
             </div>
           </div>
@@ -329,6 +305,6 @@
       </div>
     </footer>
 
-    <script src="edit-shipment.js"></script>
+    <script src="assets/js/create-shipment.js"></script>
   </body>
 </html>

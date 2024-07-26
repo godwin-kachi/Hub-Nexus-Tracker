@@ -1,3 +1,13 @@
+// Display an error message if any
+const urlParams = new URLSearchParams(window.location.search);
+const message = urlParams.get("message");
+
+if (message != null) {
+  // document.getElementById("mes_notification").textContent = message;
+  alert(message);
+  window.location.href = "admin.html";
+}
+
 const row = document.getElementById("shipment_table");
 
 const verifier = JSON.parse(sessionStorage.getItem("admintracker"));
@@ -30,8 +40,8 @@ fetch(`${apiurl}/packageapi/getpackages.php`)
           <td id="p_cur_loc">${shipment.sending_loc}</td>
           <td id="p_ship_status">${pac_status[shipment.delivery_status]}</td>
           <td>
-            <a href="view-shipment.html?package_id=${shipment.package_id}" class="btn btn-primary py-0 pb-1">View</a>
-            <a href="edit-shipment.html?package_id=${shipment.package_id}" class="btn btn-primary py-0 pb-1">Edit</a>
+            <a href="view-shipment.html?vmode=1&package_id=${shipment.package_id}" class="btn btn-primary py-0 pb-1">View</a>
+            <a href="view-shipment.html?vmode=2&package_id=${shipment.package_id}" class="btn btn-primary py-0 pb-1">Edit</a>
             <button type="button" class="btn btn-danger p-0" onclick="deleteShipment(${shipment.package_id})">
               Del
             </button>
