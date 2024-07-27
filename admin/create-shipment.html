@@ -130,7 +130,7 @@
                     type="text"
                     class="form-control"
                     id="sender_phone"
-                    name="sender_name"
+                    name="sender_phone"
                   />
                 </div>
 
@@ -140,7 +140,7 @@
                     type="text"
                     class="form-control"
                     id="sender_adresss"
-                    name="sender_name"
+                    name="sender_address"
                   />
                 </div>
                 <div class="form-group">
@@ -169,7 +169,7 @@
                     type="text"
                     class="form-control"
                     id="receiver_phone"
-                    name="receiver_name"
+                    name="receiver_phone"
                   />
                 </div>
 
@@ -179,7 +179,7 @@
                     type="text"
                     class="form-control"
                     id="receiver_adresss"
-                    name="receiver_name"
+                    name="receiver_address"
                   />
                 </div>
 
@@ -193,12 +193,12 @@
                   />
                 </div>
                 <div class="form-group">
-                  <label for="del_loc">Pickup Location</label>
+                  <label for="delivery_loc">Pickup Location</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="del_loc"
-                    name="del_loc"
+                    id="delivery_loc"
+                    name="delivery_loc"
                   />
                 </div>
                 <div class="form-group">
@@ -208,22 +208,24 @@
                     class="form-control"
                     id="shipping_cost"
                     name="shipping_cost"
+                    value="0"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="delivery-type">Delivery Type</label>
-                  <select class="form-control" id="del_type" name="del_type">
+                  <label for="delivery_type">Delivery Type</label>
+                  <select class="form-control" id="deliver_type" name="deliver_type">
                     <option value="0">Office Pickup</option>
                     <option value="1">Home Delivery</option>
                   </select>
                 </div>
-                <div class="form-group" style="display: none">
-                  <label for="delivrry_cost">Delivery Cost</label>
+                <div class="form-group" id="del_cost_div" style="display: none">
+                  <label for="delivery_cost">Delivery Cost</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="delivrry_cost"
-                    name="delivrry_cost"
+                    id="delivery_cost"
+                    name="delivery_cost"
+                    value="0"
                   />
                 </div>
                 <div class="form-group">
@@ -269,7 +271,7 @@
           <div class="col-md-3">
             <h5>Quick Links</h5>
             <ul class="list-unstyled">
-              <li><a href="index.html" class="text-white">Home</a></li>
+              <li><a href="admiin.html" class="text-white">Home</a></li>
               <li><a href="tracking.html" class="text-white">Tracking</a></li>
               <li><a href="about.html" class="text-white">About Us</a></li>
               <li><a href="services.html" class="text-white">Services</a></li>
