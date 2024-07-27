@@ -26,61 +26,71 @@ $package = new Package($conn);
 // get posted data
 $data = json_decode(file_get_contents("php://input"));
 
-var_dump($data);
-return;
+// var_dump($data);
+// return;
 
 // make sure data is not empty
 if (
-    !empty($data->class_id) || !empty($data->subject_id) || !empty($data->term_id) || !empty($data->session_id) || !empty($data->staff_id)
+    !empty($data->description) || !empty($data->quantity) || !empty($data->sender_name) || !empty($data->sender_phone) || !empty($data->sender_address) || !empty($data->receiver_name) || !empty($data->receiver_phone) || !empty($data->receiver_address) || !empty($data->sending_loc) || !empty($data->delivery_loc) || !empty($data->shipping_cost) || !empty($data->delivery_type)
 ) {
 
-    // Sanitize & set assignment property values
-    $assignment->class_id = cleanData($data->class_id);
-    $assignment->subject_id = cleanData($data->subject_id);
-    $assignment->term_id = cleanData($data->term_id);
-    $assignment->session_id = cleanData($data->session_id);
-    $assignment->staff_id = cleanData($data->staff_id);
-    $assignment->assignment = cleanData($data->assignment);
+    // Sanitize & set package property values
+    $package->description = cleanData($data->description);
+    $package->quantity = cleanData($data->quantity);
+    $package->sender_name = cleanData($data->sender_name);
+    $package->sender_email = cleanData($data->sender_email);
+    $package->sender_phone = cleanData($data->sender_phone);
+    $package->sender_address = cleanData($data->sender_address);
+    $package->receiver_name = cleanData($data->receiver_name);
+    $package->receiver_email = cleanData($data->receiver_email);
+    $package->receiver_phone = cleanData($data->receiver_phone);
+    $package->receiver_address = cleanData($data->receiver_address);
+    $package->sending_loc = cleanData($data->sending_loc);
+    $package->delivery_loc = cleanData($data->delivery_loc);
+    $package->service_price = cleanData($data->service_price);
+    $package->delivery_type = cleanData($data->delivery_type);
+    $package->delivery_price = cleanData($data->delivery_price);
+    $package->comment = cleanData($data->comment);
 
     // create the assignment
-    $newassignment = $assignment->createAssignment();
+    $newpackage = $package->createPackage();
 
-    // var_dump($newassignment);
-    // return;
+    var_dump($package);
+    return;
 
-    if ($newassignment['outputStatus'] == 1000) {
+    if ($newpackage['outputStatus'] == 1000) {
 
         // set response code - 201 created
         http_response_code(201);
 
-        // tell the assignment
-        // echo json_encode(array("message" => "assignment was created. Please check your email for your verification link","mailSent"=>$mailSent));
-        echo json_encode(array("message" => "assignment was created successfully", "status" => 1));
+        // tell the package
+        // echo json_encode(array("message" => "package was created. Please check your email for your verification link","mailSent"=>$mailSent));
+        echo json_encode(["message" => "package was created successfully", "status" => 1]);
         return;
     }
-    elseif ($newassignment['outputStatus'] == 1200) {
+    elseif ($newpackage['outputStatus'] == 1200) {
 
-        errorDiag($newassignment['output']);
+        errorDiag($newpackage['output']);
         return;
     }
     else {
         // set response code - 200 ok
         http_response_code(400);
 
-        // tell the assignment
-        echo json_encode(array("message" => $newassignment['output'], "status" => 0));
+        // tell the package
+        echo json_encode(["message" => $newpackage['output'], "status" => 0]);
         return;
     }
     
 } else {
 
-    // tell the assignment data is incomplete
+    // tell the package data is incomplete
 
     // set response code - 400 bad request
     http_response_code(400);
 
-    // tell the assignment
-    echo json_encode(array("message" => "Unable to create assignment. Fill all fields.", "status" => 2));
+    // tell the package
+    echo json_encode(["message" => "Unable to create package. Fill all fields.", "status" => 2]);
     return;
 
 }
