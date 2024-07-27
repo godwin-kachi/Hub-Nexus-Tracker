@@ -71,6 +71,34 @@
         </nav>
       </header>
       <!-- END OF HEADER -->
+       <div class="scoreboard d-flex justify-content-center font-weight-bold">
+         <div class="d_score bg-primary m-2 p-2 rounded ">
+            <h5 class="text-center">Total Packages :</h5>
+            <h1 class="text-center" id="total_packages">89</h1>
+          </div>
+          <div class="d_score bg-success m-2 p-2 rounded ">
+            <h5 class="text-center">Total Shipped :</h5>
+            <h1 class="text-center" id="total_shipped">85</h1>
+          </div>
+          <div class="d_score bg-danger m-2 p-2 rounded ">
+            <h5 class="text-center">Total Arrived :</h5>
+            <h1 class="text-center" id="total_arrived">67</h1>
+          </div>
+          <div class="d_score bg-primary m-2 p-2 rounded ">
+            <h5 class="text-center">Total Completed :</h5>
+            <h1 class="text-center" id="total_completed">29</h1>
+          </div>
+          <div class="d_score bg-success m-2 p-2 rounded ">
+            <h5 class="text-center">Delivery Rate :</h5>
+            <h1 class="text-center" id="delivery_rate">82.3%</h1>
+          </div>
+          <div class="d_score bg-danger m-2 p-2 rounded ">
+            <h5 class="text-center">Total Revenue :</h5>
+            <h1 class="text-center" id="total_revenue">N 245,000.00</h1>
+          </div>
+        
+       </div>
+
       <table class="table table-hover">
         <thead>
           <tr>
@@ -80,7 +108,7 @@
             <th scope="col">Quantity</th>
             <th scope="col">Customer Name</th>
             <th scope="col">Shipping Date</th>
-            <th scope="col">Delivery Date</th>
+            <th scope="col">Delivery Location</th>
             <th scope="col">Shipping Cost</th>
             <th scope="col">Current Location</th>
             <th scope="col">Shipment Status</th>
@@ -94,7 +122,7 @@
           <td id="p_qty">2 bags</td>
           <td id="p_cus_name">Sample Obi</td>
           <td id="p_ship_date">02 - Mar - 2024</td>
-          <td id="pdel_date">02 - Apr - 2024</td>
+          <td id="p_del_loc">Kano</td>
           <td id="p_ship_cost">N 2,300</td>
           <td id="p_cur_loc">Ondo</td>
           <td id="p_ship_status">Order Shipper</td>
