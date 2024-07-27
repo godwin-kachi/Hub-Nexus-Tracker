@@ -6,12 +6,12 @@ const apiurl = `${location.protocol}//${location.hostname}/api`;
 const pac_status = ["Order Processed", "Order Shipped", "Order Arrived", "Order Completed"]
 
 const totalPackages = document.getElementById("total_packages");
+const totalProcessing = document.getElementById("total_processing");
 const totalShipped = document.getElementById("total_shipped");
 const totalArrived = document.getElementById("total_arrived");
 const totalCompleted = document.getElementById("total_completed");
 const deliveryRate = document.getElementById("delivery_rate");
 const totalRevenue = document.getElementById("total_revenue");
-
 
 const urlParams = new URLSearchParams(window.location.search);
 const message = urlParams.get("message");
@@ -25,7 +25,8 @@ const sampleData = [
     sender_name: "Jane Smith",
     created_at: "2022-01-01",
     delivery_loc: "London",
-    service_price: 50.00,
+    service_price: 5000.00,
+    delivery_price: 50.00,
     sending_loc: "New York",
     delivery_status: "1"
   },
@@ -50,8 +51,9 @@ const sampleData = [
     created_at: "2022-01-01",
     delivery_loc: "New York",
     service_price: 100.00,
+    delivery_price: 50.00,
     sending_loc: "New York",
-    delivery_status: "4"
+    delivery_status: "3"
   },
   {
     package_id: 4,
@@ -73,7 +75,8 @@ const sampleData = [
   sender_name: "John Doe",
   created_at: "2022-01-01",
   delivery_loc: "New York",
-  service_price: 100.00,
+    service_price: 100.00,
+    delivery_price: 50.00,
   sending_loc: "New York",
   delivery_status: "2"
   },
@@ -86,6 +89,7 @@ const sampleData = [
     created_at: "2022-01-01",
     delivery_loc: "New York",
     service_price: 100.00,
+    delivery_price: 50.00,
     sending_loc: "New York",
     delivery_status: "1"
   },
@@ -135,13 +139,20 @@ if (message != null) {
       `;
     });
 
-// Update scoreboards
+    // Update scoreboards
     totalPackages.textContent = sampleData.length;
+    totalProcessing.textContent = sampleData.filter((s) => s.delivery_status === "0").length;
     totalShipped.textContent = sampleData.filter((s) => s.delivery_status === "1").length;
     totalArrived.textContent = sampleData.filter((s) => s.delivery_status === "2").length;
     totalCompleted.textContent = sampleData.filter((s) => s.delivery_status === "3").length;
-    deliveryRate.textContent = `${Math.round((parseFloat(totalShipped.textContent) / parseFloat(totalPackages.textContent)) * 100)}%`;
-    totalRevenue.textContent = `N${sampleData.reduce((acc, cur) => acc + cur.service_price, 0).toFixed(2)}`;
+    deliveryRate.textContent = `${Math.round((parseFloat(totalCompleted.textContent) / parseFloat(totalPackages.textContent)) * 100)}%`;
+let tsprice = sampleData.reduce((acc, cur) => acc + (cur.service_price ? parseFloat(cur.service_price) : 0), 0);
+let tdprice = sampleData.reduce((acc, cur) => acc + (cur.delivery_price ? parseFloat(cur.delivery_price) : 0), 0);
+
+console.log(tsprice.toLocaleString());
+console.log(tdprice)
+totalRevenue.textContent = "N" + (tsprice + tdprice).toLocaleString();
+
 
   // })
   // .catch((error) => console.error("Error:", error));

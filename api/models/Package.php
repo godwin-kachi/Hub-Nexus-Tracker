@@ -83,7 +83,7 @@ class Package
         $this->delivery_status = 0;
 
         // query to insert record
-        $query = "INSERT INTO $this->table_name (tracking_no, description, quantity, sender_name, sender_email, sender_phone, sender_address,receiver_name, receiver_email, receiver_phone, receiver_address, sending_loc, delivery_loc, service_price, delivery_type, delivery_price, delivery_status, comment ) VALUES (:tracking_no, :description, :quantity, :sender_name, :sender_email, :sender_phone, :sender_address, :receiver_name, :receiver_email, :receiver_phone, :receiver_address, sending_loc, delivery_loc, service_price, delivery_type, delivery_price, delivery_status, comment ) ";
+        $query = "INSERT INTO $this->table_name (tracking_no, description, quantity, sender_name, sender_email, sender_phone, sender_address,receiver_name, receiver_email, receiver_phone, receiver_address, sending_loc, delivery_loc, service_price, delivery_type, delivery_price, delivery_status, comment ) VALUES (:tracking_no, :description, :quantity, :sender_name, :sender_email, :sender_phone, :sender_address, :receiver_name, :receiver_email, :receiver_phone, :receiver_address, :sending_loc, :delivery_loc, :service_price, :delivery_type, :delivery_price, :delivery_status, :comment ) ";
 
         // prepare query
         $stmt = $this->conn->prepare($query);

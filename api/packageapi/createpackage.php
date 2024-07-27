@@ -55,8 +55,8 @@ if (
     // create the assignment
     $newpackage = $package->createPackage();
 
-    var_dump($package);
-    return;
+    // var_dump($package);
+    // return;
 
     if ($newpackage['outputStatus'] == 1000) {
 
