@@ -6,6 +6,7 @@ const apiurl = `${location.protocol}//${location.hostname}/api`;
 const pac_status = ["Order Processed", "Order Shipped", "Order Arrived", "Order Completed"]
 
 const totalPackages = document.getElementById("total_packages");
+const totalProcessing = document.getElementById("total_processing");
 const totalShipped = document.getElementById("total_shipped");
 const totalArrived = document.getElementById("total_arrived");
 const totalCompleted = document.getElementById("total_completed");
@@ -62,6 +63,7 @@ fetch(`${apiurl}/packageapi/getpackages.php`)
 
 // Update scoreboards
     totalPackages.textContent = shipments.result.length;
+    totalProcessing.textContent = sampleData.filter((s) => s.delivery_status === "0").length;
     totalShipped.textContent = shipments.result.filter((s) => s.delivery_status === "1").length;
     totalArrived.textContent = shipments.result.filter((s) => s.delivery_status === "2").length;
     totalCompleted.textContent = shipments.result.filter((s) => s.delivery_status === "3").length;
