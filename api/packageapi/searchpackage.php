@@ -5,7 +5,7 @@ include '../config/autoloader.php';
 header("Access-Control-Allow-Origin:" . $configx["dbconnx"]["ORIGIN"]);
 header("Content-Type:" . $configx["dbconnx"]["CONTENT_TYPE"]);
 header("Accept:" . $configx["dbconnx"]["ACCEPT_TYPE"]);
-header("Access-Control-Allow-Methods:" . $configx["dbconnx"]['GET_METHOD']);
+header("Access-Control-Allow-Methods:" . $configx["dbconnx"]['POST_METHOD']);
 header("Access-Control-Max-Age:$" . $configx["dbconnx"]['MAX_AGE']);
 header("Access-Control-Allow-Headers:" . $configx["dbconnx"]['ALLOWED_HEADERS']);
 
@@ -24,10 +24,6 @@ $package = new Package($conn);
 
 // get admin_no of user to be edited
 $data = json_decode(file_get_contents("php://input"));
-
-// http_response_code(200);
-// echo json_encode(array("message" => $data, "status"=>2));
-// return;
 
 // Check for valid admin_no
 if (empty($data->searchstring) || $data->searchstring == null || $data->searchstring == ' ') {

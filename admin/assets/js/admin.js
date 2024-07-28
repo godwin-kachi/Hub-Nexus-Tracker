@@ -1,51 +1,74 @@
-fetch('getpackages.php')
-.then(response => response.json())
-.then(data => {
-  const shipmentTbody = document.getElementById('shipment-tbody');
+// Display an error message if any
+const row = document.getElementById("shipment_table");
+const verifier = JSON.parse(sessionStorage.getItem("admintracker"));
 
-  data.forEach(shipment => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td>${shipment.trackingNumber}</td>
-      <td>${shipment.sender}</td>
-      <td>${shipment.recipient}</td>
-      <td>${shipment.status}</td>
-      <td>
-        <a href="view-shipment.html?trackingNumber=${shipment.trackingNumber}" class="btn btn-primary btn-sm">View</a>
-        <a href="edit-shipment.html?trackingNumber=${shipment.trackingNumber}" class="btn btn-secondary btn-sm">Edit</a>
-        <button class="btn btn-danger btn-sm delete-btn" data-tracking-number="${shipment.trackingNumber}">Delete</button>
-      </td>
-    `;
-    shipmentTbody.appendChild(row);
-  });
+const apiurl = `${location.protocol}//${location.hostname}/api`;
+const pac_status = ["Order Processed", "Order Shipped", "Order Arrived", "Order Completed"]
 
-  // Add event listener for delete buttons
-  const deleteButtons = document.querySelectorAll('.delete-btn');
-  deleteButtons.forEach(button => {
-    button.addEventListener('click', deleteShipment);
-  });
-})
-.catch(error => console.error('Error fetching shipments:', error));
+const totalPackages = document.getElementById("total_packages");
+const totalProcessing = document.getElementById("total_processing");
+const totalShipped = document.getElementById("total_shipped");
+const totalArrived = document.getElementById("total_arrived");
+const totalCompleted = document.getElementById("total_completed");
+const deliveryRate = document.getElementById("delivery_rate");
+const totalRevenue = document.getElementById("total_revenue");
 
-// Function to delete a shipment
-function deleteShipment(event) {
-const trackingNumber = event.target.dataset.trackingNumber;
 
-if (confirm(`Are you sure you want to delete the shipment with tracking number ${trackingNumber}?`)) {
-  fetch(`/api/shipments/${trackingNumber}`, {
-    method: 'DELETE'
-  })
-  .then(response => {
-    if (response.ok) {
-      // Remove the deleted row from the table
-      event.target.closest('tr').remove();
-      console.log(`Shipment with tracking number ${trackingNumber} deleted successfully.`);
-    } else {
-      console.error(`Error deleting shipment with tracking number ${trackingNumber}.`);
-    }
-  })
-  .catch(error => {
-    console.error('Error deleting shipment:', error);
-  });
+const urlParams = new URLSearchParams(window.location.search);
+const message = urlParams.get("message");
+
+if (message != null) {
+  // document.getElementById("mes_notification").textContent = message;
+  alert(message);
+  window.location.href = "admin.html";
 }
-}
+
+
+// Page auth protector
+// if (!verifier) {
+//   window.location.href = "../admin/admin-login.html";
+// }
+
+
+// Fetch all shipments from the API
+fetch(`${apiurl}/packageapi/getpackages.php`)
+.then((response) => response.json())
+  .then((shipments) => {
+
+    // Display shipments in the table
+    row.innerHTML = "";
+    shipments.result.forEach((shipment) => {
+    // sampleData.forEach((shipment) => {
+
+      row.innerHTML += `
+          <td id="p_id">${shipment.package_id}</td>
+           <td id="p_tno">${shipment.tracking_no}</td>
+          <td id="p_desc">${shipment.description}</td>
+          <td id="p_qty">${shipment.quantity}</td>
+          <td id="p_cus_name">${shipment.sender_name}</td>
+          <td id="p_ship_date">${shipment.created_at}</td>
+          <td id="p_del_loc">${shipment.delivery_loc}</td>
+          <td id="p_ship_cost">${shipment.service_price}</td>
+          <td id="p_cur_loc">${shipment.sending_loc}</td>
+          <td id="p_ship_status">${pac_status[shipment.delivery_status]}</td>
+          <td>
+            <a href="view-shipment.html?vmode=1&package_id=${shipment.package_id}" class="btn btn-primary py-0 pb-1">View</a>
+            <a href="view-shipment.html?vmode=2&package_id=${shipment.package_id}" class="btn btn-primary py-0 pb-1">Edit</a>
+            <button type="button" class="btn btn-danger p-0" onclick="deleteShipment(${shipment.package_id})">
+              Del
+            </button>
+          </td>
+      `;
+    });
+
+// Update scoreboards
+    totalPackages.textContent = shipments.result.length;
+    totalProcessing.textContent = sampleData.filter((s) => s.delivery_status === "0").length;
+    totalShipped.textContent = shipments.result.filter((s) => s.delivery_status === "1").length;
+    totalArrived.textContent = shipments.result.filter((s) => s.delivery_status === "2").length;
+    totalCompleted.textContent = shipments.result.filter((s) => s.delivery_status === "3").length;
+    deliveryRate.textContent = `${Math.round((parseFloat(totalShipped.textContent) / parseFloat(totalPackages.textContent)) * 100)}%`;
+    totalRevenue.textContent = `N${shipments.result.reduce((acc, cur) => acc + cur.service_price, 0).toFixed(2)}`;
+
+  })
+  .catch((error) => console.error("Error:", error));

@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Shipment - FastTrack</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <style>
+      .edit-shipment {
+        padding: 10px 0;
+      }
+      .edit-shipment .card {
+        max-width: 600px;
+        margin: 0 auto;
+      }
+      .edit-shipment .card-header {
+        background-color: #007bff;
+        color: #fff;
+      }
+      .edit-shipment .card-body {
+        padding: 10px;
+      }
+      .edit-shipment .form-group label {
+        font-weight: 600;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">FastTrack</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="admin.html"
+                >Home</a
+              >
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link" href="create-shipment.html"
+                >Create Shipment</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="analytics.html"
+                >Analytics</a
+              >
+            </li>
+          </ul>
+        </div>
+        <form class="d-flex" id="logoutbtn">
+          <button class="btn btn-outline-success btn-danger text-white py-0 pb-1" type="submit">
+            Logout
+          </button>
+        </form>
+      </nav>
+    </header>
+
+    <main>
+      <div class="edit-shipment">
+        <div class="container">
+          <div class="card">
+            <div class="card-header">
+              <h4 class="mb-0">Edit Shipment</h4>
+            </div>
+            <div class="card-body">
+              <form id="edit-shipment-form">
+                <div class="form-group">
+                  <label for="pack_id">Package ID : </label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="pack_id"
+                    name="pack_id"
+                    readonly
+                  />
+                </div>
+                  <div class="form-group">
+                    <label for="track_no">Tracking No : </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="track_no"
+                      name="track_no"
+                      readonly
+                    />
+                  </div>
+
+                    <div class="form-group">
+                      <label for="pack_desc">Description</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="pack_desc"
+                        name="pack_desc"
+                        readonly
+                      />
+                    </div>
+
+               <div class="form-group">
+                        <label for="pack_qty">Quantity</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="pack_qty"
+                          name="pack_qty"
+                          readonly
+                        />
+                </div>
+                <div class="form-group">
+                  <label for="sender_name">Sender Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="sender_name"
+                    name="sender_name"
+                    readonly
+                  />
+                </div>
+
+                  <div class="form-group">
+                    <label for="sender_email">Sender Email</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="sender_email"
+                      name="sender_email"
+                      readonly
+                    />
+                  </div>
+
+                    <div class="form-group">
+                      <label for="sender_phone">Sender Phone</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="sender_phone"
+                        name="sender_name"
+                        readonly
+                      />
+                    </div>
+
+                <div class="form-group">
+                        <label for="sender_adresss">Sender Adresss</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="sender_adresss"
+                          name="sender_name"
+                          readonly
+                        />
+                </div>
+                <div class="form-group">
+                  <label for="receiver_name">Receiver Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="receiver_name"
+                    name="receiver_name"
+                    readonly
+                  />
+                </div>
+
+                  <div class="form-group">
+                    <label for="receiver_email">Receiver Email</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="receiver_email"
+                      name="receiver_email"
+                      readonly
+                    />
+                  </div>
+
+                    <div class="form-group">
+                      <label for="receiver_phone">Receiver Phone</label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        id="receiver_phone"
+                        name="receiver_name"
+                        readonly
+                      />
+                    </div>
+
+                <div class="form-group">
+                        <label for="receiver_adresss">Receiver Adresss</label>
+                        <input
+                          type="text"
+                          class="form-control"
+                          id="receiver_adresss"
+                          name="receiver_name"
+                          disabled
+                        />
+                </div>
+
+                <div class="form-group">
+                  <label for="sending_loc">Sending Location</label>
+                  <text
+                    class="form-control"
+                    id="sending_loc"
+                    name="sending_loc"
+                    readonly
+                  >
+                  </text>
+                </div>
+                <div class="form-group">
+                  <label for="del_loc">Pickup Location</label>
+                  <input type="text"
+                    class="form-control"
+                    id="del_loc"
+                    name="del_loc"
+                    readonly
+                    cols="3"
+                  >
+                </div>
+                <div class="form-group">
+                  <label for="shipping_cost">Shipping Cost</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="shipping_cost"
+                    name="shipping_cost"
+                    readonly
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="delivery-type">Delivery Type</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="delivery_type"
+                    name="delivery_type"
+                    readonly
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="delivrry_cost">Delivery Cost</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="delivrry_cost"
+                    name="delivrry_cost"
+                    readonly
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="total_cost">Total Cost</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="total_cost"
+                    name="total_cost"
+                    readonly
+                  />
+                </div>
+               
+                <div class="form-group">
+                  <label for="delivrry_cost">Delivery Status</label>
+                    <select class="form-control" id="del_status" disabled="disabled">
+                    <option value="0">order Processed</option>
+                    <option value="1">Order Shipped</option>
+                    <option value="2">Order Arrived</option>
+                    <option value="3">order Completed</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="comment">Comment</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="comment"
+                    name="comment"
+                    readonly
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="shipment_date">Shipment Date</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="shipment_date"
+                    name="shipment_date"
+                    readonly
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="update_date">Last Order Update Date</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="update_date"
+                    name="update_date"
+                    readonly
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="cur_loc">Current Location</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="cur_loc"
+                    name="cur_loc"
+                    disabled
+                  />
+                </div>
+
+                <input type="submit" class="btn btn-primary " value="EDIT">
+                 <input type="submit" class="btn btn-success"value="SAVE">
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <footer class="bg-dark text-white py-4">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <h5>FastTrack</h5>
+            <p>Reliable and efficient shipping solutions.</p>
+          </div>
+          <div class="col-md-3">
+            <h5>Quick Links</h5>
+            <ul class="list-unstyled">
+              <li><a href="index.html" class="text-white">Home</a></li>
+              <li><a href="tracking.html" class="text-white">Tracking</a></li>
+              <li><a href="about.html" class="text-white">About Us</a></li>
+              <li><a href="services.html" class="text-white">Services</a></li>
+              <li><a href="contact.html" class="text-white">Contact</a></li>
+            </ul>
+          </div>
+          <div class="col-md-3">
+            <h5>Follow Us</h5>
+            <ul class="list-unstyled">
+              <li>
+                <a href="#" class="text-white"
+                  ><i class="fab fa-facebook-f"></i> Facebook</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white"
+                  ><i class="fab fa-twitter"></i> Twitter</a
+                >
+              </li>
+              <li>
+                <a href="#" class="text-white"
+                  ><i class="fab fa-linkedin-in"></i> LinkedIn</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col-md-12 text-center">
+            <p class="mb-0">&copy; 2023 FastTrack. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script src="edit-shipment.js"></script>
+  </body>
+</html>

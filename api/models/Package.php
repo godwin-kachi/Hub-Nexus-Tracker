@@ -8,6 +8,7 @@ class Package
     public $package_id;
     public $tracking_no;
     public $description;
+    public $quantity;
     public $sender_name;
     public $sender_email;
     public $sender_phone;
@@ -79,9 +80,10 @@ class Package
     {
         // Generate tracking no
         $this->genTrackNo();
+        $this->delivery_status = 0;
 
         // query to insert record
-        $query = "INSERT INTO $this->table_name (tracking_no, description, sender_name, sender_email, sender_phone, sender_address,receiver_name, receiver_email, receiver_phone, receiver_address, sending_loc, delivery_loc, service_price, delivery_type, delivery_price, delivery_status, comment ) VALUES (:tracking_no, :description, :sender_name, :sender_email, :sender_phone, :sender_address, :receiver_name, :receiver_email, :receiver_phone, :receiver_address, sending_loc, delivery_loc, service_price, delivery_type, delivery_price, delivery_status, comment ) ";
+        $query = "INSERT INTO $this->table_name (tracking_no, description, quantity, sender_name, sender_email, sender_phone, sender_address,receiver_name, receiver_email, receiver_phone, receiver_address, sending_loc, delivery_loc, service_price, delivery_type, delivery_price, delivery_status, comment ) VALUES (:tracking_no, :description, :quantity, :sender_name, :sender_email, :sender_phone, :sender_address, :receiver_name, :receiver_email, :receiver_phone, :receiver_address, :sending_loc, :delivery_loc, :service_price, :delivery_type, :delivery_price, :delivery_status, :comment ) ";
 
         // prepare query
         $stmt = $this->conn->prepare($query);
@@ -89,6 +91,7 @@ class Package
         // bind values
         $stmt->bindParam(":tracking_no", $this->tracking_no);
         $stmt->bindParam(":description", $this->description);
+        $stmt->bindParam(":quantity", $this->quantity);
         $stmt->bindParam(":sender_name", $this->sender_name);
         $stmt->bindParam(":sender_email", $this->sender_email);
         $stmt->bindParam(":sender_phone", $this->sender_phone);
@@ -123,6 +126,7 @@ class Package
         $query = "UPDATE $this->table_name SET 
                 tracking_no = :tracking_no,
                 description = :description,
+                quantity = :quantity,
                 sender_name = :sender_name,
                 sender_email = :sender_email,
                 sender_phone = :sender_phone,
@@ -148,6 +152,7 @@ class Package
         // bind values
         $update_stmt->bindParam(":tracking_no", $this->tracking_no);
         $update_stmt->bindParam(":description", $this->description);
+        $update_stmt->bindParam(":quantity", $this->quantity);
         $update_stmt->bindParam(":sender_name", $this->sender_name);
         $update_stmt->bindParam(":sender_email", $this->sender_email);
         $update_stmt->bindParam(":sender_phone", $this->sender_phone);
