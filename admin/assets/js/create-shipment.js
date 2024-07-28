@@ -26,39 +26,31 @@ createShipmentForm.addEventListener("submit", async (event) => {
 
   const apiurl = `${location.protocol}//${location.hostname}/api`;
 
-  // try {
-  //   const response = await fetch(`${apiurl}/packageapi/createpackage`, {
-  //     method: 'POST',
-  //     mode: 'no-cors',
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       "Accept": "application/json"
-  //     },
-  //     body: JSON.stringify(shipmentData)
-  //   });
-  //
-  //   if (response.ok) {
+  const createConfig = {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: {
+      "Content-Type": "application/json",
+      "Accept": "application/json"
+    },
+    body: JSON.stringify(shipmentData)
+  }
 
-  //     alert('Shipment created successfully!');
-  //   } else {
-  //     const errorData = await response.json();
-  //     alert(`Error creating shipment: ${errorData.message}`);
-  //   }
-  // } catch (error) {
-  //   console.error('Error creating shipment:', error);
-  //   alert('An error occurred while creating the shipment. Please try again later.');
-  // }
+  fetch(`${apiurl}/packageapi/createpackage.php`, createConfig)
+    .then(res => res.json())
+    .then(data => {
+      // console.log(data);
+        alert(data.message)
+    })
+  .catch(err => console.log(err))
 });
 
 
 
 
-
-
 // Manage total cost calculation
-
 const shippingCostInput = document.getElementById("shipping_cost");
-const deliveryTypeInput = document.getElementById("del_type");
+const deliveryTypeInput = document.getElementById("delivery_type");
 const deliveryCostInput = document.getElementById("delivery_cost");
 const delCostDiv = document.getElementById("del_cost_div");
 const totalCostElement = document.getElementById("total_cost");
