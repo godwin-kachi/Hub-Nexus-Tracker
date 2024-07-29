@@ -2,13 +2,13 @@
 const row = document.getElementById("shipment_table");
 const verifier = JSON.parse(sessionStorage.getItem("admintracker"));
 
-const apiurl = `${location.protocol}//${location.hostname}/api`;
-const pac_status = [
-  "Order Processed",
-  "Order Shipped",
-  "Order Arrived",
-  "Order Completed",
-];
+// const apiurl = `${location.protocol}//${location.hostname}/api`;
+// const pac_status = [
+//   "Order Processed",
+//   "Order Shipped",
+//   "Order Arrived",
+//   "Order Completed",
+// ];
 
 const totalPackages = document.getElementById("total_packages");
 const totalProcessing = document.getElementById("total_processing");
