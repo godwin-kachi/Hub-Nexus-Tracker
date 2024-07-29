@@ -37,6 +37,8 @@
                     aria-current="page"
                     href="admin.html"
                     >Home</a
+                  <a class="nav-link active" aria-current="page" href="admin.html"
+                    >Dashboard</a
                   >
                 </li>
 
@@ -77,6 +79,44 @@
         </nav>
       </header>
       <!-- END OF HEADER -->
+      <div class="scoreboard d-flex justify-content-center font-weight-bold">
+        <div class="d_score bg-primary m-2 p-2 rounded">
+          <h5 class="text-center">Total</h5>
+          <h5 class="text-center">Packages</h5>
+          <h1 class="text-center" id="total_packages">89</h1>
+        </div>
+        <div class="d_score bg-success m-2 p-2 rounded">
+          <h5 class="text-center">Total</h5>
+          <h5 class="text-center">Processing</h5>
+          <h1 class="text-center" id="total_processing">85</h1>
+        </div>
+        <div class="d_score bg-success m-2 p-2 rounded">
+          <h5 class="text-center">Total</h5>
+          <h5 class="text-center">Shipped</h5>
+          <h1 class="text-center" id="total_shipped">85</h1>
+        </div>
+        <div class="d_score bg-danger m-2 p-2 rounded">
+          <h5 class="text-center">Total</h5>
+          <h5 class="text-center">Arrived</h5>
+          <h1 class="text-center" id="total_arrived">67</h1>
+        </div>
+        <div class="d_score bg-primary m-2 p-2 rounded">
+          <h5 class="text-center">Total</h5>
+          <h5 class="text-center">Completed</h5>
+          <h1 class="text-center" id="total_completed">29</h1>
+        </div>
+        <div class="d_score bg-success m-2 p-2 rounded">
+          <h5 class="text-center">Delivery</h5>
+          <h5 class="text-center">Rate</h5>
+          <h1 class="text-center" id="delivery_rate">82.3%</h1>
+        </div>
+        <div class="d_score bg-danger m-2 p-2 rounded">
+          <h5 class="text-center">Total</h5>
+          <h5 class="text-center">Revenue</h5>
+          <h1 class="text-center" id="total_revenue">N 245,000.00</h1>
+        </div>
+      </div>
+
       <table class="table table-hover">
         <thead>
           <tr>
@@ -86,7 +126,7 @@
             <th scope="col">Quantity</th>
             <th scope="col">Customer Name</th>
             <th scope="col">Shipping Date</th>
-            <!-- <th scope="col">Delivery Date</th> -->
+            <th scope="col">Delivery Location</th>
             <th scope="col">Shipping Cost</th>
             <!-- <th scope="col">Current Location</th> -->
             <th scope="col">Shipment Status</th>
@@ -107,17 +147,17 @@
           <td>
             <a
               href="view-shipment.html?vmode=1&package_id=1"
-              class="btn btn-primary py-0 px-1"
+              class="btn btn-primary py-0 pb-1"
               >View</a
             >
             <a
               href="edit-shipment.html?vmode=2&package_id=1"
-              class="btn btn-primary py-0 px-1"
+              class="btn btn-primary py-0 pb-1"
               >Edit</a
             >
             <button
               type="button"
-              class="btn btn-danger py-0 px-1"
+              class="btn btn-danger"
               onclick="deleteShipment(1)"
             >
               Del

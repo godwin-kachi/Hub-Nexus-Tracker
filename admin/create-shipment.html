@@ -50,13 +50,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="admin.html"
-                >Home</a
+              <a class="nav-link" aria-current="page" href="admin.html"
+                >Dashboard</a
               >
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="create-shipment.html"
+              <a class="nav-link active" href="create-shipment.html"
                 >Create Shipment</a
               >
             </li>
@@ -85,7 +85,6 @@
             </div>
             <div class="card-body">
               <form id="create-shipment-form">
-
                 <div class="form-group">
                   <label for="pack_desc">Description</label>
                   <input
@@ -131,7 +130,7 @@
                     type="text"
                     class="form-control"
                     id="sender_phone"
-                    name="sender_name"
+                    name="sender_phone"
                   />
                 </div>
 
@@ -141,7 +140,7 @@
                     type="text"
                     class="form-control"
                     id="sender_adresss"
-                    name="sender_name"
+                    name="sender_address"
                   />
                 </div>
                 <div class="form-group">
@@ -170,7 +169,7 @@
                     type="text"
                     class="form-control"
                     id="receiver_phone"
-                    name="receiver_name"
+                    name="receiver_phone"
                   />
                 </div>
 
@@ -180,27 +179,26 @@
                     type="text"
                     class="form-control"
                     id="receiver_adresss"
-                    name="receiver_name"
+                    name="receiver_address"
                   />
                 </div>
 
                 <div class="form-group">
                   <label for="sending_loc">Sending Location</label>
-                  <text
-                    class="form-control"
-                    id="sending_loc"
-                    name="sending_loc"
-                  >
-                  </text>
-                </div>
-                <div class="form-group">
-                  <label for="del_loc">Pickup Location</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="del_loc"
-                    name="del_loc"
-                    cols="3"
+                    id="sending_loc"
+                    name="sending_loc"
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="delivery_loc">Pickup Location</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="delivery_loc"
+                    name="delivery_loc"
                   />
                 </div>
                 <div class="form-group">
@@ -210,25 +208,24 @@
                     class="form-control"
                     id="shipping_cost"
                     name="shipping_cost"
+                    value="0"
                   />
                 </div>
                 <div class="form-group">
-                  <label for="delivery-type">Delivery Type</label>
-                  <select
-                  class="form-control"
-                  id="del_type" name="del_type"
-                >
-                  <option value="0">Office Pickup</option>
-                  <option value="1">Home Delivery</option>
-                </select>
+                  <label for="delivery_type">Delivery Type</label>
+                  <select class="form-control" id="deliver_type" name="deliver_type">
+                    <option value="0">Office Pickup</option>
+                    <option value="1">Home Delivery</option>
+                  </select>
                 </div>
-                <div class="form-group">
-                  <label for="delivrry_cost">Delivery Cost</label>
+                <div class="form-group" id="del_cost_div" style="display: none">
+                  <label for="delivery_cost">Delivery Cost</label>
                   <input
                     type="text"
                     class="form-control"
-                    id="delivrry_cost"
-                    name="delivrry_cost"
+                    id="delivery_cost"
+                    name="delivery_cost"
+                    value="0"
                   />
                 </div>
                 <div class="form-group">
@@ -243,19 +240,6 @@
                 </div>
 
                 <div class="form-group">
-                  <label for="delivrry_cost">Delivery Status</label>
-                  <select
-                    class="form-control"
-                    id="del_status" name="del_status"
-                  >
-                    <option value="0">Order Processed</option>
-                    <option value="1">Order Shipped</option>
-                    <option value="2">Order Arrived</option>
-                    <option value="3">Order Completed</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
                   <label for="comment">Comment</label>
                   <input
                     type="text"
@@ -264,18 +248,12 @@
                     name="comment"
                   />
                 </div>
-                <div class="form-group">
-                  <label for="shipment_date">Shipment Date</label>
-                  <input
-                    type="date"
-                    class="form-control"
-                    id="shipment_date"
-                    name="shipment_date"
-                  />
-                </div>
 
-                <input type="submit" class="btn btn-primary" value="EDIT" />
-                <input type="submit" class="btn btn-success" value="SAVE" />
+                <input
+                  type="submit"
+                  class="btn btn-primary"
+                  value="CREATE SHIPMENT"
+                />
               </form>
             </div>
           </div>
@@ -293,7 +271,7 @@
           <div class="col-md-3">
             <h5>Quick Links</h5>
             <ul class="list-unstyled">
-              <li><a href="index.html" class="text-white">Home</a></li>
+              <li><a href="admiin.html" class="text-white">Home</a></li>
               <li><a href="tracking.html" class="text-white">Tracking</a></li>
               <li><a href="about.html" class="text-white">About Us</a></li>
               <li><a href="services.html" class="text-white">Services</a></li>
@@ -329,6 +307,6 @@
       </div>
     </footer>
 
-    <script src="edit-shipment.js"></script>
+    <script src="assets/js/create-shipment.js"></script>
   </body>
 </html>
