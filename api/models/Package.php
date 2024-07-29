@@ -4,6 +4,9 @@ class Package
 {
 
     private $table_name = "packages";
+    private $loc_table = "plocation";
+    private $status_table = "pstatus";
+
 
     public $package_id;
     public $tracking_no;
@@ -27,6 +30,15 @@ class Package
     public $created_at;
     public $updated_at;
 
+    // Properties for package loc table
+    public $package_loc;
+    public $pl_updated_at;
+    // Properties for package status table
+    public $package_status_id;
+    public $ps_updated_at;
+
+
+    // db conn instance
     public $conn = NULL;
 
 
@@ -117,7 +129,7 @@ class Package
     }
 
 
-    // update the student
+    // update a package
     function updatePackage()
     {
         $this->updated_at = date("Y:m:d H:i:sa");
@@ -182,6 +194,60 @@ class Package
         };
     }
 
+
+        // update a package location
+        function updatePackageLocation()
+        {
+            // $this->getCurrentDateTimeStamp();
+
+            // update query
+        $query = "INSERT INTO $this->loc_table (package_id, package_loc) VALUES (:package_id, :package_loc)";
+    
+            // prepare query statement
+            $insert_stmt = $this->conn->prepare($query);
+    
+            // bind values
+            $insert_stmt->bindParam(":package_loc", $this->package_loc);
+    
+            $insert_stmt->bindParam(':package_id', $this->package_id);
+    
+            try {
+                $insert_stmt->execute();
+                // stmt return true if suucesful and false if failed
+                return ["output" => $insert_stmt, "outputStatus" => 1000];
+            } catch (Exception $e) {
+                return ["output" => $e->getMessage(), "eror" => "Netork issue. Please try again.", "outputStatus" => 1200];
+            };
+        }
+
+
+            // update a package Status
+            function updatePackageStatus()
+            {
+                // $this->getCurrentDateTimeStamp();
+    
+                // update query
+            $query = "INSERT INTO $this->status_table (package_id, package_status_id) VALUES (:package_id, :package_status_id)";
+        
+                // prepare query statement
+                $insert_stmt = $this->conn->prepare($query);
+        
+                // bind values
+                $insert_stmt->bindParam(":package_status_id", $this->package_status_id);
+        
+                $insert_stmt->bindParam(':package_id', $this->package_id);
+        
+                try {
+                    $insert_stmt->execute();
+                    // stmt return true if suucesful and false if failed
+                    return ["output" => $insert_stmt, "outputStatus" => 1000];
+                } catch (Exception $e) {
+                    return ["output" => $e->getMessage(), "eror" => "Netork issue. Please try again.", "outputStatus" => 1200];
+                };
+            }
+        
+    
+
     // delete a user
     function deletePackage()
     {
@@ -211,8 +277,6 @@ class Package
     {
 
         // select all query
-        // $query = "SELECT * FROM $this->table_name WHERE $col LIKE '%$searchstring%'";
-
         $query = "SELECT packages.*, pstatus.package_status_id, pstatus.ps_created_at, pstatus.ps_updated_at, plocation.package_loc, plocation.pl_created_at, plocation.pl_updated_at FROM $this->table_name LEFT JOIN pstatus ON packages.package_id=pstatus.package_id LEFT JOIN plocation ON packages.package_id=plocation.package_id WHERE packages.$col LIKE '%$searchstring%'";
 
         // prepare query statement
@@ -236,6 +300,13 @@ class Package
         $this->tracking_no = "TRKNO" . Date("YmdHis") . substr(md5(time()), 0, 12);
 
         return;
+    }
+
+    // Get current date time stamp
+    private function getCurrentDateTimeStamp(){
+
+        $this->updated_at = date("Y:m:d H:i:sa");
+
     }
 
 
