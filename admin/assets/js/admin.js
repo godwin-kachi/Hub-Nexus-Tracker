@@ -106,5 +106,33 @@ fetch(`${apiurl}/packageapi/getpackages.php`)
     totalRevenue.textContent = `N${shipments.result
       .reduce((acc, cur) => acc + cur.service_price, 0)
       .toFixed(2)}`;
+    totalProcessing.textContent = sampleData.filter(
+      (s) => s.delivery_status === "0"
+    ).length;
+    totalShipped.textContent = shipments.result.filter(
+      (s) => s.delivery_status === "1"
+    ).length;
+    totalArrived.textContent = shipments.result.filter(
+      (s) => s.delivery_status === "2"
+    ).length;
+    totalCompleted.textContent = shipments.result.filter(
+      (s) => s.delivery_status === "3"
+    ).length;
+    deliveryRate.textContent = `${Math.round(
+      (parseFloat(totalShipped.textContent) /
+        parseFloat(totalPackages.textContent)) *
+        100
+    )}%`;
+    let tsprice = shipments.result.reduce(
+      (acc, cur) =>
+        acc + (cur.service_price ? parseFloat(cur.service_price) : 0),
+      0
+    );
+    let tdprice = shipments.result.reduce(
+      (acc, cur) =>
+        acc + (cur.delivery_price ? parseFloat(cur.delivery_price) : 0),
+      0
+    );
+    totalRevenue.textContent = "N" + (tsprice + tdprice).toLocaleString();
   })
   .catch((error) => console.error("Error:", error));
