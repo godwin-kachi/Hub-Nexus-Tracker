@@ -38,24 +38,26 @@ if (
     $package->description = cleanData($data->description);
     $package->quantity = cleanData($data->quantity);
     $package->sender_name = cleanData($data->sender_name);
-    $package->sender_email = cleanData($data->sender_email);
+    $package->sender_email = cleanData($data->sender_email) ?? null;
     $package->sender_phone = cleanData($data->sender_phone);
     $package->sender_address = cleanData($data->sender_address);
     $package->receiver_name = cleanData($data->receiver_name);
-    $package->receiver_email = cleanData($data->receiver_email);
+    $package->receiver_email = cleanData($data->receiver_email) ?? null;
     $package->receiver_phone = cleanData($data->receiver_phone);
     $package->receiver_address = cleanData($data->receiver_address);
     $package->sending_loc = cleanData($data->sending_loc);
     $package->delivery_loc = cleanData($data->delivery_loc);
     $package->service_price = cleanData($data->service_price);
     $package->delivery_type = cleanData($data->delivery_type);
-    $package->delivery_price = cleanData($data->delivery_price);
+    $package->delivery_price = cleanData($data->delivery_price) ?? 0;
     $package->comment = cleanData($data->comment);
+
+ 
 
     // create the assignment
     $newpackage = $package->createPackage();
 
-    // var_dump($package);
+    // var_dump($newpackage);
     // return;
 
     if ($newpackage['outputStatus'] == 1000) {
