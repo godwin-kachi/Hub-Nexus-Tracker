@@ -7,7 +7,6 @@ class Package
     private $loc_table = "plocation";
     private $status_table = "pstatus";
 
-
     public $package_id;
     public $tracking_no;
     public $description;
@@ -306,6 +305,8 @@ class Package
     private function getCurrentDateTimeStamp(){
 
         $this->updated_at = date("Y:m:d H:i:sa");
+
+        return;
 
     }
 

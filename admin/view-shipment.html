@@ -92,7 +92,7 @@
                     class="form-control"
                     id="pack_id"
                     name="pack_id"
-                    readonly
+                    disabled
                   />
                 </div>
                 <div class="form-group">
@@ -102,7 +102,7 @@
                     class="form-control"
                     id="track_no"
                     name="track_no"
-                    readonly
+                    disabled
                   />
                 </div>
 
@@ -113,7 +113,7 @@
                     class="form-control"
                     id="pack_desc"
                     name="pack_desc"
-                    readonly
+                    disabled
                   />
                 </div>
 
@@ -124,7 +124,7 @@
                     class="form-control"
                     id="pack_qty"
                     name="pack_qty"
-                    readonly
+                    disabled
                   />
                 </div>
                 <div class="form-group">
@@ -134,7 +134,7 @@
                     class="form-control"
                     id="sender_name"
                     name="sender_name"
-                    readonly
+                    disabled
                   />
                 </div>
 
@@ -145,7 +145,7 @@
                     class="form-control"
                     id="sender_email"
                     name="sender_email"
-                    readonly
+                    disabled
                   />
                 </div>
 
@@ -156,7 +156,7 @@
                     class="form-control"
                     id="sender_phone"
                     name="sender_phone"
-                    readonly
+                    disabled
                   />
                 </div>
 
@@ -167,7 +167,7 @@
                     class="form-control"
                     id="sender_address"
                     name="sender_address"
-                    readonly
+                    disabled
                   />
                 </div>
                 <div class="form-group">
@@ -177,7 +177,7 @@
                     class="form-control"
                     id="receiver_name"
                     name="receiver_name"
-                    readonly
+                    disabled
                   />
                 </div>
 
@@ -188,7 +188,7 @@
                     class="form-control"
                     id="receiver_email"
                     name="receiver_email"
-                    readonly
+                    disabled
                   />
                 </div>
 
@@ -199,7 +199,7 @@
                     class="form-control"
                     id="receiver_phone"
                     name="receiver_name"
-                    readonly
+                    disabled
                   />
                 </div>
 
@@ -220,7 +220,7 @@
                     class="form-control"
                     id="sending_loc"
                     name="sending_loc"
-                    readonly
+                    disabled
                   />
                 </div>
                 <div class="form-group">
@@ -230,7 +230,7 @@
                     class="form-control"
                     id="delivery_loc"
                     name="delivery_loc"
-                    readonly
+                    disabled
                     cols="3"
                   />
                 </div>
@@ -241,7 +241,8 @@
                     class="form-control"
                     id="service_price"
                     name="service_price"
-                    readonly
+                    value="0"
+                    disabled
                   />
                 </div>
                 <div class="form-group">
@@ -263,17 +264,18 @@
                     class="form-control"
                     id="delivery_price"
                     name="delivery_price"
-                    readonly
+                    value="0"
+                    disabled
                   />
                 </div>
-                <div class="form-group" id="del_cost_div">
+                <div class="form-group">
                   <label for="total_cost">Total Cost</label>
                   <input
                     type="text"
                     class="form-control"
                     id="total_cost"
                     name="total_cost"
-                    readonly
+                    disabled
                   />
                 </div>
 
@@ -284,27 +286,27 @@
                     class="form-control"
                     id="comment"
                     name="comment"
-                    readonly
+                    disabled
                   />
                 </div>
                 <div class="form-group">
                   <label for="shipment_date">Order Placement Date</label>
                   <input
-                    type="text"
+                    type="datetime"
                     class="form-control"
                     id="shipment_date"
                     name="shipment_date"
-                    readonly
+                    disabled
                   />
                 </div>
                 <div class="form-group">
                   <label for="update_date">Last Order Update Date</label>
                   <input
-                    type="text"
+                    type="datetime"
                     class="form-control"
                     id="update_date"
                     name="update_date"
-                    readonly
+                    disabled
                   />
                 </div>
                 <div class="form-group">
@@ -332,53 +334,61 @@
                     <option value="3">Order Completed</option>
                   </select>
                 </div>
-
-                <input
-                  type="button"
-                  class="btn btn-primary"
-                  id="edit_btn"
-                  value="EDIT PACKAGE"
-                />
-                <input
-                  type="submit"
-                  class="btn btn-success"
-                  id="save_btn"
-                  value="SAVE PACKAGE"
-                  style="display: none"
-                />
-                <input
-                  type="button"
-                  class="btn btn-primary"
-                  id="edit_status_btn"
-                  value="EDIT PACAKGE STATUS"
-                />
-                <input
-                  type="button"
-                  class="btn btn-success"
-                  id="save_status_btn"
-                  value="SAVE NEW PACAKGE STATUS"
-                  style="display: none"
-                />
-                <input
-                  type="button"
-                  class="btn btn-primary"
-                  id="edit_loc_btn"
-                  value="EDIT PACKAGE LOCATION"
-                />
-                <input
-                  type="button"
-                  class="btn btn-success"
-                  id="save_loc_btn"
-                  value="SAVE NEW PACKAGE LOCATION"
-                  style="display: none"
-                />
-                <input
-                  type="button"
-                  class="btn btn-danger"
-                  id="cancel"
-                  value="CANCEL"
-                  style="display: none"
-                />
+                <div class="btns d-flex">
+                  <input
+                    type="button"
+                    class="btn btn-primary"
+                    id="edit_btn"
+                    name="edit_btn"
+                    value="EDIT PACKAGE"
+                  />
+                  <input
+                    type="submit"
+                    class="btn btn-success"
+                    id="save_btn"
+                    name="save_btn"
+                    value="SAVE PACKAGE"
+                    style="display: none"
+                  />
+                  <input
+                    type="button"
+                    class="btn btn-primary mx-3"
+                    id="edit_status_btn"
+                    name="edit_status_btn"
+                    value="EDIT STATUS"
+                  />
+                  <input
+                    type="button"
+                    class="btn btn-success"
+                    id="save_status_btn"
+                    name="save_status_btn"
+                    value="SAVE NEW PACAKGE STATUS"
+                    style="display: none"
+                  />
+                  <input
+                    type="button"
+                    class="btn btn-primary"
+                    id="edit_loc_btn"
+                    name="edit_loc_btn"
+                    value="EDIT LOCATION"
+                  />
+                  <input
+                    type="button"
+                    class="btn btn-success"
+                    id="save_loc_btn"
+                    name="save_loc_btn"
+                    value="SAVE NEW PACKAGE LOCATION"
+                    style="display: none"
+                  />
+                  <input
+                    type="button"
+                    class="btn btn-danger mx-2"
+                    id="cancel_btn"
+                    name="cancel_btn"
+                    value="CANCEL"
+                    style="display: none"
+                  />
+                </div>
               </form>
             </div>
           </div>
@@ -387,6 +397,6 @@
     </main>
 
     <script src="assets/js/view-shipment.js"></script>
-    <script src="assets/js/edit-shipment.js"></script>
+    <!-- <script src="assets/js/edit-shipment.js"></script> -->
   </body>
 </html>
