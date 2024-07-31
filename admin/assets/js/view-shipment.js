@@ -86,7 +86,8 @@ function displayTrackingDetails() {
           "/admin.html" + "Go through the admin panel and try again";
         return;
       }
-      //console.log(data);
+      console.log(data);
+
       // Update the tracking information based on the API response
       pack_id.value = data.result.package_id;
       track_no.value = data.result.tracking_no;
@@ -114,8 +115,16 @@ function displayTrackingDetails() {
       comment.value = data.result.comment;
       pack_created_at.value = data.result.created_at;
       pack_updated_at.value = data.result.updated_at;
-      cur_loc.value = data.result.package_loc ?? data.result.sending_loc;
-      delivery_status.value = data.result.delivery_status;
+      cur_loc.value =
+        data.result.cur_loc == null || data.result.cur_loc.trim() == ""
+          ? data.result.sending_loc
+          : data.result.cur_loc;
+      delivery_status.value =
+        data.result.package_status_id == null
+          ? data.result.delivery_status
+          : data.result.package_status_id;
+
+      //cur_loc.value = data.result.package_loc ?? data.result.sending_loc;
 
       // ======= dom inserts goes ends here =======
     })
@@ -158,7 +167,7 @@ function saveNewPackageLocation() {
   const locUpdateData = {
     update_mode: "update_location",
     package_id: pack_id.value,
-    package_loc: cur_loc.value,
+    cur_loc: cur_loc.value,
   };
 
   const locUpdateConfig = {
@@ -193,6 +202,13 @@ function saveNewPackageLocation() {
 
       // action here
       console.log(data);
+      if (data.status == 1) {
+        alert("New Package Location is updated successfully");
+      } else {
+        alert("New Package Location updated FAILED. Please try again");
+      }
+
+      location.reload();
     })
     .catch((error) => {
       // Log the error to console
@@ -212,7 +228,7 @@ function saveNewPackageStatus() {
   const statusUpdateData = {
     update_mode: "update_status",
     package_id: pack_id.value,
-    package_loc: delivery_status.value,
+    delivery_status: delivery_status.value,
   };
 
   const statusUpdateConfig = {
@@ -246,7 +262,14 @@ function saveNewPackageStatus() {
       }
 
       // action here
-      console.log(data);
+      //console.log(data);
+      if (data.status == 1) {
+        alert("New Package Status is updated successfully");
+      } else {
+        alert("New Package Status updated FAILED. Please try again");
+      }
+
+      location.reload();
     })
     .catch((error) => {
       // Log the error to console
@@ -258,7 +281,7 @@ function saveNewPackageStatus() {
 }
 
 // =================================================================
-// ======== View Shipment Form Submit Handler =======================
+// ======== View Shipment Form Submit UPDATE Handler =======================
 // =================================================================
 viewShipmentForm.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -266,7 +289,8 @@ viewShipmentForm.addEventListener("submit", (event) => {
   const formData = new FormData(event.target);
 
   const shipmentData = {
-    package_id: formData.get("pack_id"),
+    update_mode: "update_package",
+    package_id: pack_id.value,
     decscription: formData.get("pack_desc"),
     quantity: formData.get("pack_qty"),
     sender_name: formData.get("sender_name"),
@@ -275,17 +299,20 @@ viewShipmentForm.addEventListener("submit", (event) => {
     sender_address: formData.get("sender_address"),
     receiver_name: formData.get("receiver_name"),
     receiver_email: formData.get("receiver_email"),
-    receiver_phone: formData.get("receiver_phone"),
+    receiver_phone: receiver_phone.value,
     receiver_address: formData.get("receiver_address"),
     sending_loc: formData.get("sending_loc"),
     delivery_loc: formData.get("delivery_loc"),
-    service_price: formData.get("shipping_cost"),
+    service_price: service_price.value,
     delivery_type: parseFloat(formData.get("delivery_type")),
     delivery_price: formData.get("delivery_price"),
+
+    delivery_status: delivery_status.value,
+    cur_loc: cur_loc.value,
     comment: formData.get("comment"),
   };
 
-  console.log(shipmentData);
+  //console.log(shipmentData);
 
   const apiurl = `${host_protocol}//${host_name}/api`;
 
@@ -304,18 +331,19 @@ viewShipmentForm.addEventListener("submit", (event) => {
       // Check if the response is not OK, then read as text
       if (!response.ok) {
         const text = await response.text();
-        alert(text);
+        alert(text + "response not ok");
         throw new Error(`Error response from server: ${text}`);
       }
       return response.json();
     })
     .then((data) => {
-      console.log(data);
-      alert(data.message);
+      //console.log(data);
+      alert(data.message + "data ok");
+
+      location.reload();
     })
     .catch((err) => {
-      console.log(err);
-      console.log(err + " (Status 28)");
+      //console.log(err + " (Status 28)");
       alert(err.message);
     });
 });
@@ -361,7 +389,9 @@ function enablePackageInputs() {
   edit_loc_btn.style.display = "none";
   save_loc_btn.style.display = "none";
 }
+
 // =========================================================
+
 function enableLocationInput() {
   cur_loc.disabled = false;
 
@@ -373,7 +403,9 @@ function enableLocationInput() {
   edit_loc_btn.style.display = "none";
   save_loc_btn.style.display = "block";
 }
+
 // =========================================================
+
 function enableStatusInput() {
   delivery_status.disabled = false;
 
@@ -385,6 +417,7 @@ function enableStatusInput() {
   edit_loc_btn.style.display = "none";
   save_loc_btn.style.display = "none";
 }
+
 // =========================================================
 // =========================================================
 // =========================================================
