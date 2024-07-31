@@ -25,6 +25,9 @@ class Package
     public $delivery_type;
     public $delivery_price;
     public $delivery_status;
+    public $del_status_date;
+    public $cur_loc;
+    public $cur_loc_date;
     public $comment;
     public $created_at;
     public $updated_at;
@@ -52,8 +55,10 @@ class Package
         // select query if student ID is provided
         // $query = "SELECT * FROM $this->table_name WHERE package_id=$this->package_id";
 
-        $query = "SELECT packages.*, pstatus.package_status_id, pstatus.ps_created_at, pstatus.ps_updated_at, plocation.package_loc, plocation.pl_created_at, plocation.pl_updated_at FROM $this->table_name LEFT JOIN pstatus ON packages.package_id=pstatus.package_id LEFT JOIN plocation ON packages.package_id=plocation.package_id WHERE packages.package_id=$this->package_id";
+        //$query = "SELECT packages.*, pstatus.package_status_id, pstatus.ps_created_at, pstatus.ps_updated_at, plocation.package_loc, plocation.pl_created_at, plocation.pl_updated_at FROM $this->table_name LEFT JOIN pstatus ON packages.package_id=pstatus.package_id LEFT JOIN plocation ON packages.package_id=plocation.package_id WHERE packages.package_id=$this->package_id";
 
+         $query = "SELECT * FROM $this->table_name WHERE package_id=$this->package_id";
+            
         // prepare query statement
         $select_stmt = $this->conn->prepare($query);
 
@@ -126,37 +131,73 @@ class Package
             return ["output" => $e->getMessage(), "eror" => "Netork issue. Please try again.", "outputStatus" => 1200];
         };
     }
+        
+        
+        
+     // update a package
+    function updatePackage()
+    {
+        $this->updated_at = date("Y-m-d H:i:sa");
+
+        // update query
+        $query = "UPDATE $this->table_name SET tracking_no = :tracking_no, description = :description, quantity = :quantity, sender_name = :sender_name, sender_email = :sender_email, sender_phone = :sender_phone, sender_address = :sender_address, receiver_name = :receiver_name, receiver_email = :receiver_email, receiver_phone = :receiver_phone, receiver_address = :receiver_address, sending_loc = :sending_loc, delivery_loc = :delivery_loc, service_price = :service_price, delivery_type = :delivery_type, delivery_price = :delivery_price, delivery_status = :delivery_status, del_status_date = :del_status_date, cur_loc = :cur_loc, cur_loc_date = :cur_loc_date,  comment = :comment, updated_at = :updated_at WHERE package_id = :package_id";
+        
+              
+        // prepare query statement
+        $update_stmt = $this->conn->prepare($query);
+
+        // bind values
+        $update_stmt->bindParam(":tracking_no", $this->tracking_no);
+        $update_stmt->bindParam(":description", $this->description);
+        $update_stmt->bindParam(":quantity", $this->quantity);
+        $update_stmt->bindParam(":sender_name", $this->sender_name);
+        $update_stmt->bindParam(":sender_email", $this->sender_email);
+        $update_stmt->bindParam(":sender_phone", $this->sender_phone);
+        $update_stmt->bindParam(":sender_address", $this->sender_address);
+        $update_stmt->bindParam(":receiver_name", $this->receiver_name);
+        $update_stmt->bindParam(":receiver_email", $this->receiver_email);
+        $update_stmt->bindParam(":receiver_phone", $this->receiver_phone);
+        $update_stmt->bindParam(":receiver_address", $this->receiver_address);
+        $update_stmt->bindParam(":sending_loc", $this->sending_loc);
+        $update_stmt->bindParam(":delivery_loc", $this->delivery_loc);
+        $update_stmt->bindParam(":service_price", $this->service_price);
+        $update_stmt->bindParam(":delivery_type", $this->delivery_type);
+            
+        $update_stmt->bindParam(":delivery_price", $this->delivery_price);
+        $update_stmt->bindParam(":delivery_status", $this->delivery_status);
+        $update_stmt->bindParam(":del_status_date", $this->del_status_date);
+        $update_stmt->bindParam(":cur_loc", $this->cur_loc);
+         $update_stmt->bindParam(":cur_loc_date", $this->cur_loc_date);
+     
+            
+        $update_stmt->bindParam(":comment", $this->comment);
+
+        $update_stmt->bindParam(':updated_at', $this->updated_at);
+
+        $update_stmt->bindParam(':package_id', $this->package_id);
+
+        try {
+            $update_stmt->execute();
+            // stmt return true if suucesful and false if failed
+            return ["output" => $update_stmt, "outputStatus" => 1000];
+        } catch (Exception $e) {
+            return ["output" => $e->getMessage(), "eror" => "Netork issue. Please try again.", "outputStatus" => 1200];
+        };
+    }
+
+        
+        
 
 
     // update a package
-    function updatePackage()
+    function updatePackage2()
     {
-        $this->updated_at = date("Y:m:d H:i:sa");
+        $this->updated_at = date("Y-m-d H:i:sa");
 
         // update query
-        $query = "UPDATE $this->table_name SET 
-                tracking_no = :tracking_no,
-                description = :description,
-                quantity = :quantity,
-                sender_name = :sender_name,
-                sender_email = :sender_email,
-                sender_phone = :sender_phone,
-                sender_address = :sender_address,
-                receiver_name = :receiver_name,
-                receiver_email = :receiver_email,
-                receiver_phone = :receiver_phone,
-                receiver_address = :receiver_address,
-                sending_loc = :sending_loc,
-                delivery_loc = :delivery_loc,
-                service_price = :service_price,
-                delivery_type = :delivery_type,
-                delivery_price = :delivery_price,
-                delivery_status = :delivery_status,
-                comment = :comment,
-                updated_at = :updated_at
-                 WHERE
-                 package_id = :package_id";
-
+        $query = "UPDATE $this->table_name SET tracking_no = :tracking_no, description = :description, quantity = :quantity, sender_name = :sender_name, sender_email = :sender_email, sender_phone = :sender_phone, sender_address = :sender_address, receiver_name = :receiver_name, receiver_email = :receiver_email, receiver_phone = :receiver_phone, receiver_address = :receiver_address, sending_loc = :sending_loc, delivery_loc = :delivery_loc, service_price = :service_price, delivery_type = :delivery_type, delivery_price = :delivery_price, delivery_status = :delivery_status, comment = :comment, updated_at = :updated_at WHERE package_id = :package_id";
+        
+              
         // prepare query statement
         $update_stmt = $this->conn->prepare($query);
 
@@ -197,18 +238,21 @@ class Package
         // update a package location
         function updatePackageLocation()
         {
-            // $this->getCurrentDateTimeStamp();
+            $this->getCurrentDateTimeStamp_2($this->cur_loc_date);
 
             // update query
-        $query = "INSERT INTO $this->loc_table (package_id, package_loc) VALUES (:package_id, :package_loc)";
+            //$query = "INSERT INTO $this->loc_table (package_id, package_loc) VALUES (:package_id, :package_loc)";
+            $query = "UPDATE $this->table_name SET cur_loc = :cur_loc, cur_loc_date = :cur_loc_date WHERE package_id = :package_id";
     
             // prepare query statement
             $insert_stmt = $this->conn->prepare($query);
     
             // bind values
-            $insert_stmt->bindParam(":package_loc", $this->package_loc);
-    
+            //$insert_stmt->bindParam(":package_loc", $this->package_loc);
+                
             $insert_stmt->bindParam(':package_id', $this->package_id);
+            $insert_stmt->bindParam(':cur_loc', $this->cur_loc);
+            $insert_stmt->bindParam(':cur_loc_date', $this->cur_loc_date);
     
             try {
                 $insert_stmt->execute();
@@ -220,30 +264,31 @@ class Package
         }
 
 
-            // update a package Status
-            function updatePackageStatus()
-            {
-                // $this->getCurrentDateTimeStamp();
-    
+        // update a package Status
+        function updatePackageStatus()
+        {
+                $this->getCurrentDateTimeStamp_2($this->del_status_date);
+
                 // update query
-            $query = "INSERT INTO $this->status_table (package_id, package_status_id) VALUES (:package_id, :package_status_id)";
-        
+                //$query = "INSERT INTO $this->status_table (package_id, package_status_id) VALUES (:package_id, :package_status_id)";
+                $query = "UPDATE $this->table_name SET delievry_status=:delievry_status, del_status_date=:del_status_date WHERE package_id=:package_id";
+
                 // prepare query statement
                 $insert_stmt = $this->conn->prepare($query);
-        
+
                 // bind values
-                $insert_stmt->bindParam(":package_status_id", $this->package_status_id);
-        
+                $insert_stmt->bindParam(":delivery_status", $this->delivery_status);
+                $insert_stmt->bindParam(":del_status_date", $this->del_status_date);
                 $insert_stmt->bindParam(':package_id', $this->package_id);
-        
+
                 try {
-                    $insert_stmt->execute();
-                    // stmt return true if suucesful and false if failed
-                    return ["output" => $insert_stmt, "outputStatus" => 1000];
+                        $insert_stmt->execute();
+                        // stmt return true if suucesful and false if failed
+                        return ["output" => $insert_stmt, "outputStatus" => 1000];
                 } catch (Exception $e) {
-                    return ["output" => $e->getMessage(), "eror" => "Netork issue. Please try again.", "outputStatus" => 1200];
+                        return ["output" => $e->getMessage(), "eror" => "Netork issue. Please try again.", "outputStatus" => 1200];
                 };
-            }
+        }
         
     
 
@@ -298,16 +343,22 @@ class Package
 
         $this->tracking_no = "TRKNO" . Date("YmdHis") . substr(md5(time()), 0, 12);
 
-        return;
     }
 
     // Get current date time stamp
     private function getCurrentDateTimeStamp(){
 
-        $this->updated_at = date("Y:m:d H:i:sa");
+        $this->updated_at = date("Y-m-d H:i:sa");
 
-        return;
+    }
+        
+     
+        
+    // Get current date time stamp
+    private function getCurrentDateTimeStamp_2($curDate){
 
+        $curDate = date("Y-m-d H:i:sa");
+       
     }
 
 
