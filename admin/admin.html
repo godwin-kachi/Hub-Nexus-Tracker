@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -33,7 +32,10 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
               <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                  <a class="nav-link active" aria-current="page" href="admin.html"
+                  <a
+                    class="nav-link active"
+                    aria-current="page"
+                    href="admin.html"
                     >Dashboard</a
                   >
                 </li>
@@ -44,9 +46,7 @@
                   >
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="analytics.html"
-                    >Analytics</a
-                  >
+                  <a class="nav-link" href="analytics.html">Analytics</a>
                 </li>
               </ul>
               <form class="d-flex" role="search">
@@ -56,13 +56,19 @@
                   placeholder="Search"
                   aria-label="Search"
                 />
-                <button class="btn btn-outline-success text-white" type="submit">
+                <button
+                  class="btn btn-outline-success text-white"
+                  type="submit"
+                >
                   Search
                 </button>
               </form>
 
               <form class="d-flex mx-3" id="logoutbtn">
-                <button class="btn btn-outline-success btn-danger text-white py-0 pb-1" type="submit">
+                <button
+                  class="btn btn-outline-success btn-danger text-white py-0 pb-1"
+                  type="submit"
+                >
                   Logout
                 </button>
               </form>
@@ -71,50 +77,49 @@
         </nav>
       </header>
       <!-- END OF HEADER -->
-       <div class="scoreboard d-flex justify-content-center font-weight-bold">
-         <div class="d_score bg-primary m-2 p-2 rounded ">
-            <h5 class="text-center">Total</h5>
-            <h5 class="text-center">Packages</h5>
-            <h1 class="text-center" id="total_packages">89</h1>
-          </div>
-          <div class="d_score bg-success m-2 p-2 rounded ">
-            <h5 class="text-center">Total</h5>
-            <h5 class="text-center">Processing</h5>
-            <h1 class="text-center" id="total_processing">85</h1>
-          </div>
-          <div class="d_score bg-success m-2 p-2 rounded ">
-            <h5 class="text-center">Total</h5>
-            <h5 class="text-center">Shipped</h5>
-            <h1 class="text-center" id="total_shipped">85</h1>
-          </div>
-          <div class="d_score bg-danger m-2 p-2 rounded ">
-            <h5 class="text-center">Total</h5>
-            <h5 class="text-center">Arrived</h5>
-            <h1 class="text-center" id="total_arrived">67</h1>
-          </div>
-          <div class="d_score bg-primary m-2 p-2 rounded ">
-            <h5 class="text-center">Total</h5>
-            <h5 class="text-center">Completed</h5>
-            <h1 class="text-center" id="total_completed">29</h1>
-          </div>
-          <div class="d_score bg-success m-2 p-2 rounded ">
-            <h5 class="text-center">Delivery</h5>
-            <h5 class="text-center">Rate</h5>
-            <h1 class="text-center" id="delivery_rate">82.3%</h1>
-          </div>
-          <div class="d_score bg-danger m-2 p-2 rounded ">
-            <h5 class="text-center">Total</h5>
-            <h5 class="text-center">Revenue</h5>
-            <h1 class="text-center" id="total_revenue">N 245,000.00</h1>
-          </div>
-        
-       </div>
+      <div class="scoreboard d-flex justify-content-center font-weight-bold">
+        <div class="d_score bg-primary m-2 p-2 rounded">
+          <h5 class="text-center">Total</h5>
+          <h5 class="text-center">Packages</h5>
+          <h1 class="text-center" id="total_packages">89</h1>
+        </div>
+        <div class="d_score bg-success m-2 p-2 rounded">
+          <h5 class="text-center">Total</h5>
+          <h5 class="text-center">Processing</h5>
+          <h1 class="text-center" id="total_processing">85</h1>
+        </div>
+        <div class="d_score bg-success m-2 p-2 rounded">
+          <h5 class="text-center">Total</h5>
+          <h5 class="text-center">Shipped</h5>
+          <h1 class="text-center" id="total_shipped">85</h1>
+        </div>
+        <div class="d_score bg-danger m-2 p-2 rounded">
+          <h5 class="text-center">Total</h5>
+          <h5 class="text-center">Arrived</h5>
+          <h1 class="text-center" id="total_arrived">67</h1>
+        </div>
+        <div class="d_score bg-primary m-2 p-2 rounded">
+          <h5 class="text-center">Total</h5>
+          <h5 class="text-center">Completed</h5>
+          <h1 class="text-center" id="total_completed">29</h1>
+        </div>
+        <div class="d_score bg-success m-2 p-2 rounded">
+          <h5 class="text-center">Delivery</h5>
+          <h5 class="text-center">Rate</h5>
+          <h1 class="text-center" id="delivery_rate">82.3%</h1>
+        </div>
+        <div class="d_score bg-danger m-2 p-2 rounded">
+          <h5 class="text-center">Total</h5>
+          <h5 class="text-center">Revenue</h5>
+          <h1 class="text-center" id="total_revenue">N 245,000.00</h1>
+        </div>
+      </div>
 
       <table class="table table-hover">
         <thead>
           <tr>
-            <th scope="col">Package ID : </th>
-            <th scope="col">Tracking ID : </th>
+            <th scope="col">Package ID :</th>
+            <th scope="col">Tracking ID :</th>
             <th scope="col">Items Description</th>
             <th scope="col">Quantity</th>
             <th scope="col">Customer Name</th>
@@ -138,9 +143,17 @@
           <td id="p_cur_loc">Ondo</td>
           <td id="p_ship_status">Order Shipper</td>
           <td>
-            <a href="view-shipment.html?vmode=1&package_id=2" class="btn btn-primary py-0 pb-1">View</a>
-            <a href="view-shipment.html?vmode=2&package_id=2" class="btn btn-primary py-0 pb-1">Edit</a>
-            <button type="button" class="btn btn-danger" onclick="deleteShipment(1)">
+            <a
+              href="view-shipment.html?vmode=1&package_id=2"
+              class="btn btn-primary py-0 pb-1"
+              >View</a
+            >
+            <a
+              href="view-shipment.html?vmode=2&package_id=2"
+              class="btn btn-primary py-0 pb-1"
+              >Edit</a
+            >
+            <button type="button" class="btn btn-danger" id="delbtn">
               Del
             </button>
           </td>
@@ -148,15 +161,12 @@
       </table>
     </div>
 
-
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
-    <!-- <script src="assets/js/admin.js"></script> -->
-    <script src="adarchives/admin_prof.js"></script>
-
-
+    <script src="assets/js/admin.js"></script>
+    <!-- <script src="adarchives/admin_prof.js"></script> -->
   </body>
 </html>

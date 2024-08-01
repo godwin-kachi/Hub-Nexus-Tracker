@@ -5,7 +5,7 @@ include '../config/autoloader.php';
 header("Access-Control-Allow-Origin:" . $configx["dbconnx"]["ORIGIN"]);
 header("Content-Type:" . $configx["dbconnx"]["CONTENT_TYPE"]);
 header("Access-Control-Allow-Methods:" . $configx["dbconnx"]['GET_METHOD']);
-header("Access-Control-Max-Age:$" . $configx["dbconnx"]['MAX_AGE']);
+header("Access-Control-Max-Age:" . $configx["dbconnx"]['MAX_AGE']);
 header("Access-Control-Allow-Headers:" . $configx["dbconnx"]['ALLOWED_HEADERS']);
 
 // initialize object

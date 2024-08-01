@@ -1,3 +1,4 @@
 <ifModule mod_headers.c>
-Header set Access-Control-Allow-Origin: *
+  Header set Access-Control-Allow-Origin: "*" Header set
+  Access-Control-Allow-Methods: "GET, POST, PATCH, OPTIONS, PUT, DELETE"
 </ifModule>
