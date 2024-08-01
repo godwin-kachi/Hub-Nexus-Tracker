@@ -2,11 +2,11 @@
 include '../config/autoloader.php';
 
 // required headers
-header("Access-Control-Allow-Origin: " . $configx["dbconnx"]["ORIGIN"]);
-header("Content-Type: " . $configx["dbconnx"]["CONTENT_TYPE"]);
-header("Access-Control-Allow-Methods: " . $configx["dbconnx"]["POST_METHOD"]);
-header("Access-Control-Max-Age: " . $configx["dbconnx"]["MAX_AGE"]);
-header("Access-Control-Allow-Headers: " . $configx["dbconnx"]["ALLOWED_HEADERS"]);
+header("Access-Control-Allow-Origin:" . $configx["dbconnx"]["ORIGIN"]);
+header("Content-Type:" . $configx["dbconnx"]["CONTENT_TYPE"]);
+header("Access-Control-Allow-Methods:" . $configx["dbconnx"]["POST_METHOD"]);
+header("Access-Control-Max-Age:" . $configx["dbconnx"]["MAX_AGE"]);
+header("Access-Control-Allow-Headers:" . $configx["dbconnx"]["ALLOWED_HEADERS"]);
 
 // initialize object
 $db = new Database($configx);
