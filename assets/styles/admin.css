@@ -1,0 +1,51 @@
+.top_section {
+  /* background-color: red; */
+  width: 100%;
+}
+.top_section h5,
+.top_section h1 {
+  font-size: 0.7rem;
+}
+
+/* .top_section div {
+  
+  background-color: #fff !important;
+} */
+
+@media screen and (max-width: 728px) {
+  .body_content {
+    display: flex;
+    flex-direction: column-reverse;
+  }
+  .top_section {
+    position: fixed;
+    bottom: 1px;
+  }
+  .top_section h1 {
+    font-size: large;
+    margin: 20px 0 0 0;
+  }
+
+  .top_section h5 {
+    font-size: small;
+    line-height: 0.1rem;
+
+    margin-top: 10px;
+  }
+  .top_section div:nth-child(even) {
+    display: none;
+  }
+
+  .top_section div {
+    margin: 1px !important;
+    padding: 5px 15px !important;
+  }
+  tr th:nth-child(odd),
+  tr td:nth-child(odd) {
+    display: none;
+  }
+  tr td:last-child button,
+  tr td a:nth-child(even) {
+    display: none;
+  }
+}

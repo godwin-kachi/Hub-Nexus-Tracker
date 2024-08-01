@@ -2,6 +2,7 @@
 const row = document.getElementById("shipment_table");
 const verifier = JSON.parse(sessionStorage.getItem("admintracker"));
 
+
 const apiurl = `${location.protocol}//${location.hostname}/api`;
 const pac_status = [
   "Order Processed",
@@ -9,6 +10,7 @@ const pac_status = [
   "Order Arrived",
   "Order Completed",
 ];
+
 
 const totalPackages = document.getElementById("total_packages");
 const totalProcessing = document.getElementById("total_processing");
@@ -32,6 +34,8 @@ if (message != null) {
 //   window.location.href = "../admin/admin-login.html";
 // }
 
+
+
 // Fetch all shipments from the API
 fetch(`${apiurl}/packageapi/getpackages.php`)
   .then((response) => response.json())
@@ -50,12 +54,14 @@ fetch(`${apiurl}/packageapi/getpackages.php`)
           <td id="p_ship_date">${shipment.created_at}</td>
           <td id="p_del_loc">${shipment.delivery_loc}</td>
           <td id="p_ship_cost">${shipment.service_price}</td>
-          <td id="p_cur_loc">${shipment.sending_loc}</td>
+          
           <td id="p_ship_status">${pac_status[shipment.delivery_status]}</td>
           <td>
+
             <a href="view-shipment.html?vmode=1&package_id=${shipment.package_id}" class="btn btn-primary py-0 pb-1">View</a>
             <a href="view-shipment.html?vmode=2&package_id=${shipment.package_id}" class="btn btn-primary py-0 pb-1">Edit</a>
             <button type="button" class="btn btn-danger p-0" id="delbtn">
+
               Del
             </button>
           </td>
@@ -89,6 +95,28 @@ fetch(`${apiurl}/packageapi/getpackages.php`)
         parseFloat(totalPackages.textContent)) *
         100
     )}%`;
+
+    totalRevenue.textContent = `N${shipments.result
+      .reduce((acc, cur) => acc + cur.service_price, 0)
+      .toFixed(2)}`;
+    totalProcessing.textContent = sampleData.filter(
+      (s) => s.delivery_status === "0"
+    ).length;
+    totalShipped.textContent = shipments.result.filter(
+      (s) => s.delivery_status === "1"
+    ).length;
+    totalArrived.textContent = shipments.result.filter(
+      (s) => s.delivery_status === "2"
+    ).length;
+    totalCompleted.textContent = shipments.result.filter(
+      (s) => s.delivery_status === "3"
+    ).length;
+    deliveryRate.textContent = `${Math.round(
+      (parseFloat(totalShipped.textContent) /
+        parseFloat(totalPackages.textContent)) *
+        100
+    )}%`;
+
     let tsprice = shipments.result.reduce(
       (acc, cur) =>
         acc + (cur.service_price ? parseFloat(cur.service_price) : 0),

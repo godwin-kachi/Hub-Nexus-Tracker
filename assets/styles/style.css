@@ -1,38 +1,42 @@
 :root {
-    --primary-color: #007bff;
-    --secondary-color: #6c757d;
-    --light-color: #f8f9fa;
-    --dark-color: #343a40;
+  --primary-color: #007bff;
+  --secondary-color: #6c757d;
+  --light-color: #f8f9fa;
+  --dark-color: #343a40;
+}
+
+table {
+  font-size: smaller;
 }
 
 body {
-    font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
 .navbar-brand {
-    font-weight: 700;
-    font-size: 1.5rem;
+  font-weight: 700;
+  font-size: 1.5rem;
 }
 
 .nav-link {
-    font-weight: 500;
-    color: var(--light-color);
-    transition: color 0.3s ease;
+  font-weight: 500;
+  color: var(--light-color);
+  transition: color 0.3s ease;
 }
 
 .nav-link:hover {
-    color: #fff;
+  color: #fff;
 }
 
 .btn-primary {
-    background-color: var(--primary-color);
-    border-color: var(--primary-color);
-    transition: background-color 0.3s ease, border-color 0.3s ease;
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
 }
 
 .btn-primary:hover {
-    background-color: #0056b3;
-    border-color: #0056b3;
+  background-color: #0056b3;
+  border-color: #0056b3;
 }
 
 .about-section,
@@ -41,7 +45,7 @@ body {
 .feature-section,
 .team-section,
 .testimonial-section {
-    padding: 80px 0;
+  padding: 80px 0;
 }
 
 .about-section h2,
@@ -50,286 +54,286 @@ body {
 .feature-section h2,
 .team-section h2,
 .testimonial-section h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 40px;
-    color: var(--primary-color);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 40px;
+  color: var(--primary-color);
 }
 
 .about-section .about-content {
-    color: var(--secondary-color);
-    font-size: 1.1rem;
-    line-height: 1.8;
+  color: var(--secondary-color);
+  font-size: 1.1rem;
+  line-height: 1.8;
 }
 
 .fact-section .fact-item {
-    text-align: center;
-    padding: 30px;
-    background-color: var(--light-color);
-    border-radius: 5px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 30px;
+  background-color: var(--light-color);
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .fact-section .fact-item i {
-    font-size: 36px;
-    color: var(--primary-color);
-    margin-bottom: 20px;
+  font-size: 36px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
 }
 
 .fact-section .fact-item h4 {
-    font-size: 2rem;
-    font-weight: 700;
-    color: var(--dark-color);
-    margin-bottom: 10px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--dark-color);
+  margin-bottom: 10px;
 }
 
 .fact-section .fact-item p {
-    font-size: 1.1rem;
-    color: var(--secondary-color);
+  font-size: 1.1rem;
+  color: var(--secondary-color);
 }
 
 .service-section .service-item {
-    text-align: center;
-    padding: 40px 30px;
-    background-color: var(--light-color);
-    border-radius: 5px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+  text-align: center;
+  padding: 40px 30px;
+  background-color: var(--light-color);
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
 }
 
 .service-section .service-item:hover {
-    transform: translateY(-10px);
+  transform: translateY(-10px);
 }
 
 .service-section .service-item i {
-    font-size: 48px;
-    color: var(--primary-color);
-    margin-bottom: 20px;
+  font-size: 48px;
+  color: var(--primary-color);
+  margin-bottom: 20px;
 }
 
 .service-section .service-item h4 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--dark-color);
-    margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark-color);
+  margin-bottom: 10px;
 }
 
 .service-section .service-item p {
-    font-size: 1.1rem;
-    color: var(--secondary-color);
+  font-size: 1.1rem;
+  color: var(--secondary-color);
 }
 
 .feature-section .feature-item {
-    display: flex;
-    align-items: center;
-    margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
 }
 
 .feature-section .feature-item i {
-    font-size: 36px;
-    color: var(--primary-color);
-    margin-right: 20px;
+  font-size: 36px;
+  color: var(--primary-color);
+  margin-right: 20px;
 }
 
 .feature-section .feature-item h4 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--dark-color);
-    margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark-color);
+  margin-bottom: 10px;
 }
 
 .feature-section .feature-item p {
-    font-size: 1.1rem;
-    color: var(--secondary-color);
+  font-size: 1.1rem;
+  color: var(--secondary-color);
 }
 
 .team-section .team-member {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-bottom: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 40px;
 }
 
 .team-section .team-member img {
-    width: 100%;
-    max-width: 200px; 
-    height: auto;
-    border-radius: 50%;
-    margin-bottom: 20px;
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  border-radius: 50%;
+  margin-bottom: 20px;
 }
 
 .team-section .team-member h4 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--dark-color);
-    margin-bottom: 5px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark-color);
+  margin-bottom: 5px;
 }
 
 .team-section .team-member p {
-    font-size: 1.1rem;
-    color: var(--secondary-color);
+  font-size: 1.1rem;
+  color: var(--secondary-color);
 }
 
 .testimonial-section .testimonial-item {
-    text-align: center;
-    padding: 40px;
-    background-color: var(--light-color);
-    border-radius: 5px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 40px;
+  background-color: var(--light-color);
+  border-radius: 5px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
 }
 
 .testimonial-section .testimonial-item img {
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    margin-bottom: 20px;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin-bottom: 20px;
 }
 
 .testimonial-section .testimonial-item h4 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--dark-color);
-    margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--dark-color);
+  margin-bottom: 10px;
 }
 
 .testimonial-section .testimonial-item p {
-    font-size: 1.1rem;
-    color: var(--secondary-color);
-    margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: var(--secondary-color);
+  margin-bottom: 20px;
 }
 
 .testimonial-section .testimonial-item .rating i {
-    color: #ffc107;
-    font-size: 18px;
+  color: #ffc107;
+  font-size: 18px;
 }
 
 .footer {
-    background-color: var(--dark-color);
-    color: var(--light-color);
-    padding: 60px 0;
+  background-color: var(--dark-color);
+  color: var(--light-color);
+  padding: 60px 0;
 }
 
 .footer h4 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 20px;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
 .footer p {
-    font-size: 1.1rem;
-    line-height: 1.8;
+  font-size: 1.1rem;
+  line-height: 1.8;
 }
 
 .footer ul {
-    list-style-type: none;
-    padding: 0;
+  list-style-type: none;
+  padding: 0;
 }
 
 .footer ul li {
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 .footer ul li a {
-    color: var(--light-color);
-    text-decoration: none;
-    transition: color 0.3s ease;
+  color: var(--light-color);
+  text-decoration: none;
+  transition: color 0.3s ease;
 }
 
 .footer ul li a:hover {
-    color: var(--primary-color);
+  color: var(--primary-color);
 }
 
 .footer .social-icons a {
-    display: inline-block;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    background-color: var(--primary-color);
-    color: #fff;
-    border-radius: 50%;
-    margin-right: 10px;
-    transition: background-color 0.3s ease;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  background-color: var(--primary-color);
+  color: #fff;
+  border-radius: 50%;
+  margin-right: 10px;
+  transition: background-color 0.3s ease;
 }
 
 .footer .social-icons a:hover {
-    background-color: #0056b3;
+  background-color: #0056b3;
 }
 
 .carousel-item img {
-    object-fit: cover; 
-    height: 60vh; 
+  object-fit: cover;
+  height: 60vh;
 }
 
 .carousel-caption {
-    bottom: 20px; 
+  bottom: 20px;
 }
 
 .carousel-caption h5 {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #fff; 
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
 }
 
 .carousel-caption p {
-    font-size: 1rem; 
-    color: #fff;
+  font-size: 1rem;
+  color: #fff;
 }
 
 .carousel-caption a {
-    margin-top: 10px;
-    padding: 10px 20px;
-    font-size: 1rem;
+  margin-top: 10px;
+  padding: 10px 20px;
+  font-size: 1rem;
 }
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
-    .carousel-caption h5 {
-        font-size: 1.25rem;
-    }
+  .carousel-caption h5 {
+    font-size: 1.25rem;
+  }
 
-    .carousel-caption p {
-        font-size: 0.875rem;
-    }
+  .carousel-caption p {
+    font-size: 0.875rem;
+  }
 
-    .team-member img {
-        max-width: 150px; 
-    }
+  .team-member img {
+    max-width: 150px;
+  }
 }
 
 @media (max-width: 576px) {
-    .carousel-item img {
-        height: 50vh; 
-    }
+  .carousel-item img {
+    height: 50vh;
+  }
 
-    .carousel-caption h5 {
-        font-size: 1rem;
-    }
+  .carousel-caption h5 {
+    font-size: 1rem;
+  }
 
-    .carousel-caption p {
-        font-size: 0.75rem;
-    }
+  .carousel-caption p {
+    font-size: 0.75rem;
+  }
 }
 
 @media (max-width: 320px) {
-    .carousel-item img {
-        height: 40vh; 
-    }
+  .carousel-item img {
+    height: 40vh;
+  }
 
-    .carousel-caption {
-        padding: 10px; 
-    }
+  .carousel-caption {
+    padding: 10px;
+  }
 
-    .carousel-caption h5 {
-        font-size: 0.875rem; 
-    }
+  .carousel-caption h5 {
+    font-size: 0.875rem;
+  }
 
-    .carousel-caption p {
-        font-size: 0.75rem; 
-    }
+  .carousel-caption p {
+    font-size: 0.75rem;
+  }
 
-    .carousel-caption a {
-        padding: 8px 16px; 
-        font-size: 0.75rem; 
-    }
+  .carousel-caption a {
+    padding: 8px 16px;
+    font-size: 0.75rem;
+  }
 }
