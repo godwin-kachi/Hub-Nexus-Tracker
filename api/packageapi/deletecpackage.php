@@ -1,129 +1,103 @@
 <?php
-include('../config/autoload.php');
+include '../config/autoloader.php';
+
 // required headers
-header("Access-Control-Allow-Origin:" . $ORIGIN);
-header("Content-Type:" . $CONTENT_TYPE);
-header("Access-Control-Allow-Methods:" . $DEL_METHOD);
-header("Access-Control-Max-Age:" . $MAX_AGE);
-header("Access-Control-Allow-Headers:" . $ALLOWED_HEADERS);
+header("Access-Control-Allow-Origin: " . $configx["dbconnx"]["ORIGIN"]);
+header("Content-Type: " . $configx["dbconnx"]["CONTENT_TYPE"]);
+header("Access-Control-Allow-Methods: " . $configx["dbconnx"]["DELETE_METHOD"]);
+header("Access-Control-Max-Age: " . $configx["dbconnx"]["MAX_AGE"]);
+header("Access-Control-Allow-Headers: " . $configx["dbconnx"]["ALLOWED_HEADERS"]);
 
-// prepare user object
-$class = new Classes();
+// initialize object
+$db = new Database($configx);
+$conn = $db->getConnection();
 
-// get class id
-// read class id will be here
-$class_id = null;
+$package = new Package($conn);
 
-if (!empty($_GET['class_id'])) {
-    $class_id = $_GET['class_id'];
-} else {
+// Declare package_stmt property
+//$updateStatus = null;
+//$package_to_delete = null;
+
+// get package_id of user to be edited
+$data = json_decode(file_get_contents("php://input"));
 
 
-    $data = json_decode(file_get_contents("php://input"));
 
-    if (!empty($data->class_id)) {
-        $class_id = $data->class_id;
-    }
-}
-
-// set class id to be deleted
-$class_id = cleanData($class_id);
-
-// Check for role
-if (empty($data->role)) {
-    // set response code - 404 Not found
+// Check for valid package_id
+if (empty($data->package_id) || !is_numeric($data->package_id) || intval($data->package_id) <= 0) {
+    // set response code - 403 forbidden
     http_response_code(403);
-
-    // tell the class no products found
-    echo json_encode(
-        array("message" => "You dont have access right to delete a class.", "status" => 4)
-    );
-
+    // tell the user
+    echo json_encode(["message" => "Please provide a valid package id", "status" => 2]);
     return;
 }
 
-// Restrict delete access for admin only
-if (!isAdmin($data->role)) {
-    // set response code - 404 Not found
-    http_response_code(403);
+// set package_id property of package to be edited
+$package->package_id = cleanData($data->package_id);
 
-    // tell the class no products found
-    echo json_encode(
-        array("message" => "You dont have access right to delete a class.", "status" => 3)
-    );
+// Retrieve the package details
+$package_stmt = $package->getPackage();
 
-    return;
-}
+// Handle package retrieval errors
+if ($package_stmt['outputStatus'] == 1000) {
+        
+    $package_to_delete = $package_stmt['output']->fetch(PDO::FETCH_ASSOC);
+        
+       
+http_response_code(200);
+echo json_encode(["message" => $package_to_delete, "status" => 333]);
+return;
 
-// Check if class_id provided is valid
-if ($class_id == null || !is_numeric($class_id) || $class_id == "" || $class_id == " ") {
-    // No valid class id provided
 
-    // set response code - 404 Not found
-    http_response_code(404);
 
-    // tell the class no products found
-    echo json_encode(
-        array("message" => "Plaese provide a valid class ID", "status" => 2)
-    );
-
-    return;
-}
-
-$class->class_id = $class_id;
-// Check if class exists
-$class_stmt = $class->getClass();
-
-if ($class_stmt['outputStatus'] == 1000) {
-
-    $class_exists = $class_stmt['output']->fetch(PDO::FETCH_ASSOC);
-
-    if (!$class_exists) {
-        // No valid class id provided
-
-        // set response code - 404 Not found
+    // If package does not exist
+    if (!$package_to_delete || empty($package_to_delete)) {
+        // set response code - 404 not found
         http_response_code(404);
-
-        // tell the class no products found
-        echo json_encode(
-            array("message" => "No class found", "status" => 0)
-        );
-
+        // tell the package
+        echo json_encode(["message" => "No package found with this ID.", "status" => 0]);
         return;
     }
 
-    // delete the class
-    $class_deleted = $class->deleteClass();
 
-    if ($class_deleted['outputStatus'] == 1000) {
+        // update the package
+        $deleteStatus = $package->deletePackage();
 
+            
+    // Check delete status
+    if ($deleteStatus['outputStatus'] == 1000) {
+            
         // set response code - 200 ok
         http_response_code(200);
-
-        // tell the class
-        echo json_encode(array("message" => "class was deleted successfully.", "status" => 1));
-    } elseif ($class_deleted['outputStatus'] == 1200) {
-
-        errorDiag($class_deleted['output']);
+        // tell the package
+        echo json_encode(["message" => "Package was deleted successfully.", "status" => 1]);
         return;
-        
+            
+    } elseif ($deleteStatus['outputStatus'] == 1200) {
+            
+        errorDiag($deleteStatus['output']);
+        return;
+            
     } else {
-        // if unable to delete the class
-
+            
         // set response code - 503 service unavailable
         http_response_code(503);
-
-        // tell the class
-        echo json_encode(array("message" => "Unable to delete class. Please try again", "status" => 2));
+        // tell the package
+        echo json_encode(["message" => "Unable to delete package. Please try again.", "status" => 5]);
+        return;
+            
     }
-} elseif ($class_stmt['outputStatus'] == 1200) {
-    errorDiag($class_stmt['output']);
+} elseif ($package_stmt['outputStatus'] == 1200) {
+        
+    errorDiag($package_stmt['output']);
     return;
+        
 } else {
-
+        
     // set response code - 503 service unavailable
     http_response_code(503);
-
-    // tell the class
-    echo json_encode(array("message" => "Unable to delete class. Please try again", "status" => 5));
+    // tell the package
+    echo json_encode(["message" => "Unable to delete package. Please try again.", "status" => 6]);
+    return;
+        
 }

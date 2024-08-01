@@ -2,13 +2,15 @@
 const row = document.getElementById("shipment_table");
 const verifier = JSON.parse(sessionStorage.getItem("admintracker"));
 
-// const apiurl = `${location.protocol}//${location.hostname}/api`;
-// const pac_status = [
-//   "Order Processed",
-//   "Order Shipped",
-//   "Order Arrived",
-//   "Order Completed",
-// ];
+
+const apiurl = `${location.protocol}//${location.hostname}/api`;
+const pac_status = [
+  "Order Processed",
+  "Order Shipped",
+  "Order Arrived",
+  "Order Completed",
+];
+
 
 const totalPackages = document.getElementById("total_packages");
 const totalProcessing = document.getElementById("total_processing");
@@ -31,13 +33,8 @@ if (message != null) {
 // if (!verifier) {
 //   window.location.href = "../admin/admin-login.html";
 // }
-const apiurl = `${location.protocol}//${location.hostname}/api`;
-const pac_status = [
-  "Order Processed",
-  "Order Shipped",
-  "Order Arrived",
-  "Order Completed",
-];
+
+
 
 // Fetch all shipments from the API
 fetch(`${apiurl}/packageapi/getpackages.php`)
@@ -60,28 +57,23 @@ fetch(`${apiurl}/packageapi/getpackages.php`)
           
           <td id="p_ship_status">${pac_status[shipment.delivery_status]}</td>
           <td>
-            <a href="view-shipment.html?package_id=${
-              shipment.package_id
-            }" class="btn btn-primary py-0 pb-1">View</a>
-            <a href="edit-shipment.html?package_id=${
-              shipment.package_id
-            }" class="btn btn-primary py-0 pb-1">Edit</a>
-            <button type="button" class="btn btn-danger p-0" onclick="deleteShipment(${
-              shipment.package_id
-            })">
-            <a href="view-shipment.html?vmode=1&package_id=${
-              shipment.package_id
-            }" class="btn btn-primary py-0 pb-1">View</a>
-            <a href="view-shipment.html?vmode=2&package_id=${
-              shipment.package_id
-            }" class="btn btn-primary py-0 pb-1">Edit</a>
-            <button type="button" class="btn btn-danger p-0" onclick="deleteShipment(${
-              shipment.package_id
-            })">
+
+            <a href="view-shipment.html?vmode=1&package_id=${shipment.package_id}" class="btn btn-primary py-0 pb-1">View</a>
+            <a href="view-shipment.html?vmode=2&package_id=${shipment.package_id}" class="btn btn-primary py-0 pb-1">Edit</a>
+            <button type="button" class="btn btn-danger p-0" id="delbtn">
+
               Del
             </button>
           </td>
       `;
+
+      document.getElementById("delbtn").addEventListener("click", () => {
+
+        if (confirm("Are you sure you want to delete this package?")) {
+          delShipment(1);
+        }
+
+      });
     });
 
     // Update scoreboards
@@ -103,6 +95,7 @@ fetch(`${apiurl}/packageapi/getpackages.php`)
         parseFloat(totalPackages.textContent)) *
         100
     )}%`;
+
     totalRevenue.textContent = `N${shipments.result
       .reduce((acc, cur) => acc + cur.service_price, 0)
       .toFixed(2)}`;
@@ -123,6 +116,7 @@ fetch(`${apiurl}/packageapi/getpackages.php`)
         parseFloat(totalPackages.textContent)) *
         100
     )}%`;
+
     let tsprice = shipments.result.reduce(
       (acc, cur) =>
         acc + (cur.service_price ? parseFloat(cur.service_price) : 0),
@@ -136,3 +130,46 @@ fetch(`${apiurl}/packageapi/getpackages.php`)
     totalRevenue.textContent = "N" + (tsprice + tdprice).toLocaleString();
   })
   .catch((error) => console.error("Error:", error));
+
+// ===============================================================
+// ======== Delete Package Handler =========
+function delShipment(pid) {
+  console.log(`Deleting package with id: ${pid}`);
+
+  fetch(`${apiurl}/packageapi/deletepackages.php?packageid=${pid}`)
+  .then(async (response) => {
+    // Check if the response is not OK, then read as text
+    if (!response.ok) {
+      const text = await response.text();
+      console.log(text, " response not ok status 22");
+      alert(text, " response not ok status 22");
+      throw new Error(`Error response from server: ${text}`);
+    }
+    return response.json();
+  })
+  .then((data) => {
+    if (!data) {
+      alert("Invalid tracking number. Please check and try again.");
+      window.location.href =
+        "/admin.html" + "Go through the admin panel and try again";
+      return;
+    }
+    console.log(data);
+    alert(data);
+  })
+  .catch((error) => {
+    // Log the error to console
+    console.error("Error fetching tracking details:", error);
+    alert(
+      "Error fetching tracking details. Please try again later. (Status 23)"
+    );
+  });
+}
+
+
+// Test code: remove in production
+// document.getElementById("delbtn").addEventListener("click", () => {
+//   if (confirm("Are you sure you want to delete this package?")) {
+//     delShipment(1);
+//   }
+// });

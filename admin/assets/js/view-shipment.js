@@ -68,8 +68,18 @@ const apiurl = `${location.protocol}//${location.hostname}/api`;
 displayTrackingDetails();
 
 function displayTrackingDetails() {
+  const fetchConfig = {
+    mode: "no-cors", // Use 'cors' mode for cross-origin requests
+    headers: {
+      "Content-Type": "application/json", // Set content type to JSON
+      Accept: "application/json", // Set accept type to JSON
+    },
+  };
   // Fetch tracking details from the API
-  fetch(`${apiurl}/packageapi/getpackage.php?package_id=${package_id}`)
+  fetch(
+    `${apiurl}/packageapi/getpackage.php?package_id=${package_id}`,
+    fetchConfig
+  )
     .then(async (response) => {
       // Check if the response is not OK, then read as text
       if (!response.ok) {
