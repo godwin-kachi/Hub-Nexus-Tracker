@@ -15,6 +15,17 @@
   </head>
   <body>
     <div class="container-fluid">
+      <div
+        class="flash_message d_flex align-items-center justify-content-center flex-column"
+        onclick="hide_modal()"
+      >
+        <h3 role="alert">
+          For a better experience, please visit this page on a desktop or laptop
+        </h3>
+        <p>Click anywhere to hide this message</p>
+        <!-- <h3 class="close">&times;</h3> -->
+      </div>
+
       <header>
         <nav class="navbar navbar-expand-lg bg-primary">
           <div class="container-fluid">
@@ -208,6 +219,14 @@
         </div>
       </div>
     </div>
+
+    <script>
+      const modal = document.querySelector(".flash_message");
+
+      function hide_modal() {
+        modal.style.display = "none";
+      }
+    </script>
 
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"

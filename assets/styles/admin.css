@@ -6,6 +6,9 @@
 .top_section h1 {
   font-size: 0.7rem;
 }
+.flash_message {
+  display: none;
+}
 
 /* .top_section div {
   
@@ -16,6 +19,39 @@
   .body_content {
     display: flex;
     flex-direction: column-reverse;
+  }
+  .flash_message {
+    width: 95%;
+    position: absolute;
+    top: 15px;
+    display: flex;
+    left: 10px;
+    height: 100vh;
+    z-index: 99;
+    border-radius: 1.5rem;
+    background-color: rgba(13, 66, 90, 0.6);
+    text-align: center;
+    color: #fff;
+    cursor: pointer;
+    /* display: none; */
+  }
+  .fls {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    background-color: rgba(232, 145, 165, 0.6);
+  }
+
+  .close {
+    padding: 0.2rem 0.4rem;
+    border: 1px solid #7d2323;
+    color: #000;
+    border-radius: 5px;
+    font-size: 1.2rem;
+    position: absolute;
+    right: 5px;
+    top: 5px;
   }
   .top_section {
     position: fixed;
